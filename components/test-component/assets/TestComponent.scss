@@ -1,0 +1,9 @@
+.ho-lev-test-component {
+  /* Write base styles for TestComponent here */
+  background-color: beige;
+
+  &__heading {
+    /* Write styles for 'heading' element within TestComponent here */
+    color: navy;
+  }
+}

@@ -41,7 +41,7 @@ const Page: FC<PageProps> = props => (
           <Form.Submit value="Search" />
         </Form>
       </div>
-      <div className="govuk-grid-column-two-thirds" style={{ 'text-align': 'center' }}>
+      <div className="govuk-grid-column-two-thirds" style={{ textAlign: 'center' }}>
         <h4>Did you know?</h4>
         <p>Did you know you can enter short dates?</p>
       </div>

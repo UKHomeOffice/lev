@@ -6,10 +6,13 @@ import './app.scss';
 
 export const PageWrap: FC<PageProps> = ({ children }) => {
   const navigation = [
-    { href: '/get-started', text: 'Get started' },
-    { href: '/styles', text: 'Styles' },
-    { href: '/components', text: 'Components' },
-    { href: '/contributing', text: 'Contributing' }
+    //{ href: '/get-started', text: 'Get started' },
+    //{ href: '/components', text: 'Components' },
+    { href: '/birth', text: 'Births' },
+    { href: '/death', text: 'Deaths' },
+    { href: '/marriage', text: 'Marriages' },
+    { href: '/partnership', text: 'Civil partnerships' },
+    //{ href: '/contributing', text: 'Contributing' }
   ];
 
   return (
@@ -17,7 +20,7 @@ export const PageWrap: FC<PageProps> = ({ children }) => {
       feedbackHref="/feedback"
       navigation={navigation}
       phase="alpha"
-      title="NotGovUK"
+      title="Life Event Verification"
     >
       {children}
     </Page>

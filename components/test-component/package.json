@@ -24,7 +24,7 @@
     "react-components"
   ],
   "dependencies": {
-    "@not-govuk/component-helpers": "^0.1.0"
+    "@not-govuk/component-helpers": "^0.1.25"
   },
   "peerDependencies": {
     "@not-govuk/docs-components": "^0.1.0",
@@ -32,7 +32,7 @@
   },
   "devDependencies": {
     "@mdx-js/react": "^1.6.5",
-    "@not-govuk/component-test-helpers": "^0.1.0",
+    "@not-govuk/component-test-helpers": "^0.1.25",
     "@types/react": "^16.9.35",
     "jest": "^26.1.0",
     "ts-jest": "^26.1.1",

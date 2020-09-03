@@ -6,16 +6,18 @@ import './app.scss';
 
 export const PageWrap: FC<PageProps> = ({ children }) => {
   const navigation = [
-    { href: '/get-started', text: 'Get started' },
-    { href: '/components', text: 'Components' },
-    { href: '/contributing', text: 'Contributing' }
+    { href: '/birth', text: 'Births' },
+    { href: '/death', text: 'Deaths' },
+    { href: '/marriage', text: 'Marriages' },
+    { href: '/partnership', text: 'Civil partnerships' }
   ];
 
   return (
     <Page
+      className="wide"
       feedbackHref="/feedback"
       navigation={navigation}
-      phase="alpha"
+      phase="prototype"
       title="Life Event Verification"
     >
       {children}

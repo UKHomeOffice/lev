@@ -1,0 +1,48 @@
+import { Meta, Preview, Props, Story } from '@not-govuk/docs-components';
+import { BirthSummary } from '../src/BirthSummary';
+import readMe from '../README.md';
+export const title = 'Birth summary';
+
+<Meta
+  title="Birth summary"
+  component={ BirthSummary }
+  parameters={ {
+    jest: ['BirthSummary'],
+    notes: readMe
+  } }
+/>
+
+# Birth summary
+
+Summary of a birth registration.
+WRITE MORE DESCRIPTION HERE.
+
+<Preview withToolbar>
+  <Story name="BirthSummary">
+    <BirthSummary
+      name="John Smith"
+      date="2010-01-02"
+      place="Bournemouth"
+      number="1"
+    />
+  </Story>
+</Preview>
+
+<Props of={ BirthSummary } />
+
+
+## Stories
+### Standard
+
+A standard BirthSummary.
+
+<Preview>
+  <Story name="Standard">
+    <BirthSummary
+      name="John Smith"
+      date="2010-01-02"
+      place="Bournemouth"
+      number="1"
+    />
+  </Story>
+</Preview>

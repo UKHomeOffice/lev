@@ -1,7 +1,7 @@
-Ho Lev - Test Component
-===
+LEV - Birth Summary
+===================
 
-A component just for testing.
+Summary of a birth registration.
 
 
 Using this package
@@ -10,17 +10,17 @@ Using this package
 First install the package into your project:
 
 ```shell
-npm install -S @ho-lev/test-component
+npm install -S @ho-lev/birth-summary
 ```
 
 Then use it in your code as follows:
 
 ```js
 import React, { createElement as h } from 'react';
-import TestComponent from '@ho-lev/test-component';
+import BirthSummary from '@ho-lev/birth-summary';
 
 export const MyComponent = props => (
-  <TestComponent
+  <BirthSummary
     // WRITEME
   />
 );

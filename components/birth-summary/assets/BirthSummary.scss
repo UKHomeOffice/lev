@@ -1,0 +1,27 @@
+@import '@not-govuk/sass-base';
+
+.ho-lev-birth-summary {
+  display: block;
+  border-bottom: 1px solid $govuk-border-colour;
+
+  a {
+    @extends .govuk-link;
+    display: block;
+    padding: 0.5em;
+    color: $govuk-text-colour;
+    text-decoration: none;
+
+    &:hover, &:link, &:visited {
+      color: $govuk-text-colour;
+      text-decoration: none;
+    }
+  }
+
+  &:hover {
+    background-color: govuk-colour('light-grey');
+  }
+
+  &:first-child {
+    border-top: 1px solid $govuk-border-colour;
+  }
+}

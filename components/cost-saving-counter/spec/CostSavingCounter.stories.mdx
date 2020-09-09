@@ -1,0 +1,39 @@
+import { Meta, Preview, Props, Story } from '@not-govuk/docs-components';
+import { CostSavingCounter } from '../src/CostSavingCounter';
+import readMe from '../README.md';
+export const title = 'Cost saving counter';
+
+<Meta
+  title="Cost saving counter"
+  component={ CostSavingCounter }
+  parameters={ {
+    jest: ['CostSavingCounter'],
+    notes: readMe
+  } }
+/>
+
+# Cost saving counter
+
+A counter that shows the current cost saving.
+
+<Preview withToolbar>
+  <Story name="CostSavingCounter">
+    <div style={{ backgroundColor: 'black', padding: 15 }}>
+      <CostSavingCounter costsaving={32500.06} group="members of the public" />
+    </div>
+  </Story>
+</Preview>
+
+<Props of={ CostSavingCounter } />
+
+
+## Stories
+### Standard
+
+A standard Cost saving counter.
+
+<Preview>
+  <Story name="Standard">
+    <CostSavingCounter />
+  </Story>
+</Preview>

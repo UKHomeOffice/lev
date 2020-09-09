@@ -1,0 +1,22 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CostSavingCounter when given valid props contains no regressions 1`] = `
+<Component
+  costsaving={2345.56}
+  group="the public"
+>
+  <div
+    className="ho-lev-cost-saving-counter"
+  >
+    <h2
+      className="ho-lev-cost-saving-counter__heading"
+    >
+      £2,345.56
+    </h2>
+    <p>
+      cost saving to 
+      the public
+    </p>
+  </div>
+</Component>
+`;

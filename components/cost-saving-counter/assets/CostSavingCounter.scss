@@ -1,0 +1,15 @@
+.ho-lev-cost-saving-counter {
+  flex: 1 1 0;
+  text-align: center;
+  border: 8px solid #9325b2;
+  border-radius: 7px;
+  margin-bottom: 1vh;
+
+  & > * {
+    color: #9325b2;
+    max-width: 100%;
+  }
+  &__heading {
+    font-size: 9vh;
+  }
+}

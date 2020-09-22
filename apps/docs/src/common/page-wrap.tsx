@@ -8,7 +8,8 @@ export const PageWrap: FC<PageProps> = ({ children }) => {
   const navigation = [
     { href: '/get-started', text: 'Get started' },
     { href: '/components', text: 'Components' },
-    { href: '/contributing', text: 'Contributing' }
+    { href: '/contributing', text: 'Contributing' },
+    { href: '/accessibility-statement', text: 'Accessibility statement' }
   ];
 
   return (

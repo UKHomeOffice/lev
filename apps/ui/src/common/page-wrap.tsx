@@ -9,7 +9,8 @@ export const PageWrap: FC<PageProps> = ({ children }) => {
     { href: '/birth', text: 'Births' },
     { href: '/death', text: 'Deaths' },
     { href: '/marriage', text: 'Marriages' },
-    { href: '/partnership', text: 'Civil partnerships' }
+    { href: '/partnership', text: 'Civil partnerships' },
+    { href: '/accessibility-statement', text: 'Accessibility statement' }
   ];
 
   return (

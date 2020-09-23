@@ -47,8 +47,8 @@ Mobile Applications) (No. 2) Accessibility Regulations 2018 (the ‘accessibilit
 how we respond to your complaint, [contact the Equality Advisory and Support Service (EASS)][contact-eass].
 
 If you are in Northern Ireland and are not happy with how we respond to your complaint you can contact the [Equalities
-Commission for Northern Ireland][equality-ni] who are responsible for enforcing the Public Sector Bodies (Websites and Mobile
-Applications) (No. 2) Accessibility Regulations 2018 (the ‘accessibility regulations') in Northern Ireland.
+Commission for Northern Ireland][equality-ni] who are responsible for enforcing the Public Sector Bodies (Websites and
+Mobile Applications) (No. 2) Accessibility Regulations 2018 (the ‘accessibility regulations') in Northern Ireland.
 
 
 

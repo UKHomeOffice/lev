@@ -1,0 +1,98 @@
+@import '@not-govuk/sass-base';
+
+.ho-lev-birth-details {
+  $black: govuk-color('black');
+  $flag-border-colour: #EEEEEE;
+  $alert-bg-colour: #FFCCCC;
+  $alert-fg-colour: #CC0000;
+  $warn-bg-colour: #FFEECC;
+  $warn-text-colour: #CC7700;
+  $warn-border-colour: #CCAA00;
+
+  /* Flags */
+  .flag {
+    display: block;
+    background-color: $flag-border-colour;
+    color: $black;
+    border-left: em(10) solid $govuk-border-colour;
+    padding: em(15);
+    margin-bottom: em(20);
+
+    .button {
+      margin: 0;
+      display: inline;
+    }
+  }
+
+  .alert {
+    background-color: $alert-bg-colour;
+    color: $alert-fg-colour;
+    border-color: $alert-fg-colour;
+  }
+
+  .warning {
+    background-color: $warn-bg-colour;
+    color: $warn-text-colour;
+    border-color: $warn-border-colour;
+  }
+
+  $section-colour: #F2F3F3;
+
+  &__data {
+    border-top: 1px solid $govuk-border-colour;
+    border-bottom: 1px solid $govuk-border-colour;
+    border-collapse: collapse;
+    border-spacing: 0;
+    text-align: left;
+    width: 100%;
+
+    tbody {
+      th,
+      td {
+        @include govuk-font(19);
+        vertical-align: top;
+        border-bottom: none;
+        padding: 0.4em 0.6em 0.4em 0.6em;
+      }
+
+      th {
+        width: 10em;
+      }
+
+      td {
+        font-weight: bold;
+      }
+
+      .section-head {
+        border-top: 1px solid $govuk-border-colour;
+
+        th,
+        td {
+          font-weight: bold;
+          color: $govuk-text-colour;
+          background-color: $section-colour;
+          padding-top: 0.4em;
+          padding-bottom: 0.3em;
+        }
+      }
+    }
+  }
+
+  &__additional {
+    @include govuk-font(14);
+    position: relative;
+    top: -4px
+  }
+
+  &__mother-marriage-name {
+    th {
+      padding-bottom: 0;
+    }
+
+    & + tr {
+      th, td {
+        padding-top: 0;
+      }
+    }
+  }
+}

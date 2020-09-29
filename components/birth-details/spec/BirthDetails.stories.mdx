@@ -1,0 +1,59 @@
+import { Meta, Preview, Props, Story } from '@not-govuk/docs-components';
+import { BirthDetails } from '../src/BirthDetails';
+import readMe from '../README.md';
+export const title = 'Birth details';
+
+<Meta
+  title="Birth details"
+  component={ BirthDetails }
+  parameters={ {
+    jest: ['BirthDetails'],
+    notes: readMe
+  } }
+/>
+
+# Birth details
+
+Full information on a birth.
+
+<Preview withToolbar>
+  <Story name="BirthDetails">
+    <BirthDetails
+      birthplace="888 Birth House, 8 Birth way, Bournemouth"
+      dob="08/08/2008"
+      father=""
+      forenames="Joan Narcissus Ouroboros"
+      mother=""
+      registered=""
+      sex="Indeterminate"
+      systemNumber={123456789}
+      surname="SMITH"
+      status={{}}
+    />
+  </Story>
+</Preview>
+
+<Props of={ BirthDetails } />
+
+
+## Stories
+### Standard
+
+A standard Birth details.
+
+<Preview>
+  <Story name="Standard">
+    <BirthDetails
+      birthplace="888 Birth House, 8 Birth way, Bournemouth"
+      dob="08/08/2008"
+      father=""
+      forenames="Joan Narcissus Ouroboros"
+      mother=""
+      registered=""
+      sex="Indeterminate"
+      systemNumber={123456789}
+      surname="SMITH"
+      status={{}}
+    />
+  </Story>
+</Preview>

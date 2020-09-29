@@ -6,24 +6,36 @@ import { A } from '@not-govuk/link';
 import '../assets/BirthSummary.scss';
 
 export type BirthSummaryProps = StandardProps & {
-  /** Name of the child */
-  name: string
-  /** Date of birth */
-  date: string
   /** Place of birth */
-  place: string
+  birthplace: string
+  /** Child's father */
+  father: {
+    /** Father's name */
+    name: string
+  }
+  /** Child's forenames */
+  forenames: string
+  /** Child's mother */
+  mother: {
+    /** Mother's name */
+    name: string
+  }
   /** Number in list */
   number: number
+  /** Child's surname */
+  surname: string
 };
 
 export const BirthSummary: FC<BirthSummaryProps> = ({
+  birthplace,
   classBlock,
   classModifiers,
   className,
-  date,
-  name,
+  father,
+  forenames,
+  mother,
   number,
-  place,
+  surname,
   ...attrs
 }) => {
   const location = useLocation();
@@ -32,11 +44,27 @@ export const BirthSummary: FC<BirthSummaryProps> = ({
 
   return (
     <li {...attrs} className={classes()}>
-      <A href={href} className={classes('link')}>
-        <h4>{name}</h4>
-        <strong>DoB:</strong> {date}<br />
-        <strong>Birthplace:</strong> {place}<br />
-      </A>
+      <article>
+        <A href={href} className={classes('link')}>
+          <div className={classes('heading')}>{`${forenames} ${surname}`}</div>
+          <table className={classes('data')}>
+            <tbody>
+              <tr>
+                <th>Place of birth</th>
+                <td>{birthplace}</td>
+              </tr>
+              <tr>
+                <th>Mother</th>
+                <td>{mother.name}</td>
+              </tr>
+              <tr>
+                <th>Father</th>
+                <td>{father.name}</td>
+              </tr>
+            </tbody>
+          </table>
+        </A>
+      </article>
     </li>
   );
 };

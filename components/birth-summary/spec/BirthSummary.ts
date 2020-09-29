@@ -5,9 +5,15 @@ import BirthSummary from '../src/BirthSummary';
 describe('BirthSummary', () => {
   describe('when given valid props', () => {
     const component = mount(h(BirthSummary, {
-      name: 'John Smith',
-      date: '2010-01-02',
-      place: 'Bournemouth',
+      birthplace: 'Bournemouth',
+      forenames: 'John',
+      surname: 'SMITH',
+      father: {
+        name: 'William SMITH'
+      },
+      mother: {
+        name: 'Jane SMITH'
+      },
       number: 1
     }));
 

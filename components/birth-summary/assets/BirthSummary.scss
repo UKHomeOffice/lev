@@ -1,27 +1,74 @@
 @import '@not-govuk/sass-base';
 
 .ho-lev-birth-summary {
-  display: block;
-  border-bottom: 1px solid $govuk-border-colour;
+  $black: govuk-color('black');
+  $heading-text-colour: #005EA5;
+  $hover-bg-colour: #F2F7FA;
+  $hover-border-colour: #2D7BA4;
+  $hover-text-colour: #005EA5;
+  margin: 0;
 
-  a {
-    @extends .govuk-link;
+  &__link {
     display: block;
-    padding: 0.5em;
-    color: $govuk-text-colour;
+    border-top: 1px solid $govuk-border-colour;
     text-decoration: none;
+    padding: 10px 0;
+    color: $black;
 
-    &:hover, &:link, &:visited {
-      color: $govuk-text-colour;
-      text-decoration: none;
+    .flag {
+      display: block;
+      background-color: transparent;
+      border-left: none;
+      padding: 0;
+      margin-bottom: 0;
+      font-weight: bold;
+      margin-top: 0.4em;
+    }
+
+    &:hover {
+      background-color: $hover-bg-colour;
+      border-color: $hover-border-colour;
+
+      table {
+        th,
+        td {
+          color: $hover-text-colour;
+        }
+      }
     }
   }
 
-  &:hover {
-    background-color: govuk-colour('light-grey');
+  &__heading {
+    @include govuk-font(19);
+    font-weight: bold;
+    margin-bottom: 0.4em;
+    margin-top: 0;
+    text-decoration: underline;
+    color: $heading-text-colour;
   }
 
-  &:first-child {
-    border-top: 1px solid $govuk-border-colour;
+  &__data {
+    border-top: none;
+    border-bottom: none;
+
+    th,
+    td {
+      @include govuk-font(19);
+      border-bottom: none;
+      padding: 0.3em 0;
+      vertical-align: top;
+
+      &:last-of-type {
+        padding-bottom: 0;
+      }
+    }
+
+    th {
+      width: 7.2em;
+    }
+
+    td {
+      font-weight: bold;
+    }
   }
 }

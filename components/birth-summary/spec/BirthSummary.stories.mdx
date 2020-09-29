@@ -20,9 +20,15 @@ WRITE MORE DESCRIPTION HERE.
 <Preview withToolbar>
   <Story name="BirthSummary">
     <BirthSummary
-      name="John Smith"
-      date="2010-01-02"
-      place="Bournemouth"
+      birthplace="Bournemouth"
+      forenames="John"
+      surname="SMITH"
+      father={{
+        name: 'William SMITH'
+      }}
+      mother={{
+        name: 'Jane SMITH'
+      }}
       number="1"
     />
   </Story>
@@ -39,9 +45,15 @@ A standard BirthSummary.
 <Preview>
   <Story name="Standard">
     <BirthSummary
-      name="John Smith"
-      date="2010-01-02"
-      place="Bournemouth"
+      birthplace="Bournemouth"
+      forenames="John"
+      surname="SMITH"
+      father={{
+        name: 'William SMITH'
+      }}
+      mother={{
+        name: 'Jane SMITH'
+      }}
       number="1"
     />
   </Story>

@@ -1,0 +1,11 @@
+@import '@not-govuk/sass-base';
+
+.ho-lev-event-list {
+  border-bottom: 1px solid $govuk-border-colour;
+  list-style: none;
+  padding: 0;
+
+  li {
+    margin: 0;
+  }
+}

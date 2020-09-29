@@ -1,0 +1,112 @@
+import { Meta, Preview, Props, Story } from '@not-govuk/docs-components';
+import { BirthSummary } from '@ho-lev/birth-summary';
+import { EventList } from '../src/EventList';
+import readMe from '../README.md';
+export const title = 'Event list';
+
+<Meta
+  title="Event list"
+  component={ EventList }
+  parameters={ {
+    jest: ['EventList'],
+    notes: readMe
+  } }
+/>
+
+# Event list
+
+A list of events.
+
+<Preview withToolbar>
+  <Story name="EventList">
+    <EventList>
+      <BirthSummary
+        birthplace="Bournemouth"
+        forenames="John"
+        surname="SMITH"
+        father={{
+          name: 'William SMITH'
+        }}
+        mother={{
+          name: 'Jane SMITH'
+        }}
+        number="1"
+      />
+      <BirthSummary
+        birthplace="Swansea"
+        forenames="David"
+        surname="STEWART"
+        father={{
+          name: 'Aiden STEWART'
+        }}
+        mother={{
+          name: 'Sally STEWART'
+        }}
+        number="2"
+      />
+      <BirthSummary
+        birthplace="Newcastle"
+        forenames="James"
+        surname="HAMPTON"
+        father={{
+          name: 'Gary HAMPTON'
+        }}
+        mother={{
+          name: 'Catherine HAMPTON'
+        }}
+        number="3"
+      />
+    </EventList>
+  </Story>
+</Preview>
+
+<Props of={ EventList } />
+
+
+## Stories
+### Standard
+
+A standard Event list.
+
+<Preview>
+  <Story name="Standard">
+    <EventList>
+      <BirthSummary
+        birthplace="Bournemouth"
+        forenames="John"
+        surname="SMITH"
+        father={{
+          name: 'William SMITH'
+        }}
+        mother={{
+          name: 'Jane SMITH'
+        }}
+        number="1"
+      />
+      <BirthSummary
+        birthplace="Swansea"
+        forenames="David"
+        surname="STEWART"
+        father={{
+          name: 'Aiden STEWART'
+        }}
+        mother={{
+          name: 'Sally STEWART'
+        }}
+        number="2"
+      />
+      <BirthSummary
+        birthplace="Newcastle"
+        forenames="James"
+        surname="HAMPTON"
+        father={{
+          name: 'Gary HAMPTON'
+        }}
+        mother={{
+          name: 'Catherine HAMPTON'
+        }}
+        number="3"
+      />
+    </EventList>
+  </Story>
+</Preview>

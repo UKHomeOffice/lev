@@ -5,16 +5,16 @@ import { A, Button } from '@not-govuk/components';
 import '../assets/BirthDetails.scss';
 
 export type BirthRecordStatus = {
-  corrected: boolean
-  courtOrderInPlace: boolean
-  courtOrderRevoked: boolean
+  corrected?: boolean
+  courtOrderInPlace?: boolean
+  courtOrderRevoked?: boolean
   /** Whether the fathers details were subsequently added */
-  fatherAdded: boolean
-  fatherModified: boolean
+  fatherAdded?: boolean
+  fatherModified?: boolean
   /** Whether the user should refer to GRO for more information */
   refer: boolean
-  replaced: boolean
-  subsequentlyMarried: boolean
+  replaced?: boolean
+  subsequentlyMarried?: boolean
 }
 
 export type BirthRecord = {
@@ -26,6 +26,8 @@ export type BirthRecord = {
   father: {
     /** Father's place of birth */
     birthplace: string
+    /** Father's occupation */
+    occupation?: string
     /** Father's name */
     name: string
   }
@@ -35,6 +37,8 @@ export type BirthRecord = {
   mother: {
     /** Mother's place of birth */
     birthplace: string
+    /** Mother's occupation */
+    occupation?: string
     /** Mother's surname at marriage */
     marriageSurname?: string
     /** Mother's name */

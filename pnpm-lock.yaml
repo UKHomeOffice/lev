@@ -145,6 +145,7 @@ importers:
       '@graphql-tools/schema': 7.0.0_graphql@15.4.0
       '@ho-lev/birth-details': 'link:../../components/birth-details'
       '@ho-lev/birth-summary': 'link:../../components/birth-summary'
+      '@ho-lev/client': 'link:../../lib/client'
       '@ho-lev/event-list': 'link:../../components/event-list'
       '@not-govuk/app-composer': 0.1.29_7ba412ccea59311c279d8216f0b409f9
       '@not-govuk/client-renderer': 0.1.29_d26fbf9948b0a6fc0cef42f34a417ce1
@@ -176,6 +177,7 @@ importers:
       '@graphql-tools/schema': ^7.0.0
       '@ho-lev/birth-details': 'workspace:^0.1.0'
       '@ho-lev/birth-summary': 'workspace:^0.1.0'
+      '@ho-lev/client': 'workspace:^0.1.0'
       '@ho-lev/event-list': 'workspace:^0.1.0'
       '@not-govuk/app-composer': ^0.1.29
       '@not-govuk/client-renderer': ^0.1.29
@@ -269,6 +271,19 @@ importers:
       '@types/react': ^16.9.35
       jest: ^26.1.0
       ts-jest: ^26.1.1
+      typescript: ^3.9.2
+  lib/client:
+    dependencies:
+      '@ho-lev/test-data': 'link:../test-data'
+    devDependencies:
+      typescript: 3.9.7
+    specifiers:
+      '@ho-lev/test-data': 'workspace:^0.1.0'
+      typescript: ^3.9.2
+  lib/test-data:
+    devDependencies:
+      typescript: 3.9.7
+    specifiers:
       typescript: ^3.9.2
 lockfileVersion: 5.1
 packages:

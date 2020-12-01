@@ -20,6 +20,7 @@
     "@graphql-tools/schema": "^7.0.0",
     "@ho-lev/birth-details": "workspace:^0.1.0",
     "@ho-lev/birth-summary": "workspace:^0.1.0",
+    "@ho-lev/client": "workspace:^0.1.0",
     "@ho-lev/event-list": "workspace:^0.1.0",
     "@not-govuk/app-composer": "^0.1.29",
     "@not-govuk/client-renderer": "^0.1.29",

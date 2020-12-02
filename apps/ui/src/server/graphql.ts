@@ -40,12 +40,12 @@ type V1BirthRegistrar {
 }
 
 type V1BirthInformant {
-  forenames: String!
-  surname: String!
+  forenames: String
+  surname: String
   address: String
-  qualification: String!
-  signature: String!
-  signatureIsMark: Boolean!
+  qualification: String
+  signature: String
+  signatureIsMark: Boolean
 }
 
 type V1BirthChild {
@@ -56,7 +56,7 @@ type V1BirthChild {
   dateOfBirth: String!
   birthplace: String!
   originalPrefix: String
-  originalForenames: String!
+  originalForenames: String
   originalSuffix: String
   sex: String!
 }
@@ -67,7 +67,7 @@ type V1BirthMother {
   prefix: String
   suffix: String
   birthplace: String!
-  occupation: String!
+  occupation: String
   aliases: [V1BirthFullName]!
   maidenSurname: String!
   marriageSurname: String!
@@ -79,7 +79,7 @@ type V1BirthFather {
   prefix: String
   suffix: String
   birthplace: String!
-  occupation: String!
+  occupation: String
   aliases: [V1BirthFullName]!
   deceased: Boolean!
 }

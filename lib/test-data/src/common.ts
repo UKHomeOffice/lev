@@ -20,7 +20,7 @@ export type FullName = Name & {
   "suffix"?: string
 };
 
-export type Informant = Name & Address & {
+export type Informant = Partial<Name> & Address & {
   "qualification"?: string
   "signature"?: string
   "signatureIsMark"?: boolean

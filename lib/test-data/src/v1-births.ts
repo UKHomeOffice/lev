@@ -2,7 +2,7 @@ import { Address, Birthplace, DateOfBirth, FullName, Informant } from './common'
 import data from './v1-births.json'
 
 type Parent = FullName & Birthplace & {
-  "occupation": string
+  "occupation"?: string
   "aliases": FullName[]
 };
 
@@ -23,7 +23,7 @@ export type V1Birth = {
   "informant2": Informant
   "child": FullName & DateOfBirth & Birthplace & {
     "originalPrefix"?: string
-    "originalForenames": string
+    "originalForenames"?: string
     "originalSuffix"?: string
     "sex": string
   },

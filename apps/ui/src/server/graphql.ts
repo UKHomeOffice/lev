@@ -142,15 +142,7 @@ const resolvers = {
         const client = Client();
         const data = await client.readV1Birth(id);
 
-        if (data instanceof Error) {
-          return data;
-        } else {
-          try {
-            return redactBirth(roles)(data);
-          } catch (e) {
-            return e;
-          }
-        }
+        return redactBirth(roles)(data);
       }
     },
     v1Births: async (root, { forenames, surname, dateOfBirth }, context): Promise<V1Birth[] | Error> => {
@@ -166,15 +158,7 @@ const resolvers = {
           dateOfBirth
         });
 
-        if (data instanceof Error) {
-          return data;
-        } else {
-          try {
-            return data.map(redactBirth(roles));
-          } catch (e) {
-            return e;
-          }
-        }
+        return data.map(redactBirth(roles));
       }
     }
   }

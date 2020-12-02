@@ -25,6 +25,8 @@
     "typescript": "^3.9.2"
   },
   "dependencies": {
-    "@ho-lev/test-data": "workspace:^0.1.0"
+    "@ho-lev/test-data": "workspace:^0.1.0",
+    "cross-fetch": "^3.0.6",
+    "qs": "^6.9.4"
   }
 }

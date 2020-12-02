@@ -26,7 +26,7 @@ const extractData = <T extends object>(r: T): T => fmap(r, cleanUpData) as T;
 
 export type MockOptions = void | {};
 
-export const MockClient: LevClient<MockOptions> = () => {
+export const MockClient: LevClient<MockOptions> = () => _ => {
   const readV1Birth: ReadFn<V1Birth> = (id: number) => (
     v1Births
       .filter(e => e.id === id)

@@ -24,10 +24,10 @@
     "react-components"
   ],
   "dependencies": {
-    "@not-govuk/component-helpers": "^0.1.29",
-    "@not-govuk/link": "^0.1.29",
-    "@not-govuk/route-utils": "^0.1.29",
-    "@not-govuk/sass-base": "^0.1.29"
+    "@not-govuk/component-helpers": "^0.1.30",
+    "@not-govuk/link": "^0.1.30",
+    "@not-govuk/route-utils": "^0.1.30",
+    "@not-govuk/sass-base": "^0.1.30"
   },
   "peerDependencies": {
     "@not-govuk/docs-components": "^0.1.0",
@@ -35,7 +35,7 @@
   },
   "devDependencies": {
     "@mdx-js/react": "^1.6.5",
-    "@not-govuk/component-test-helpers": "^0.1.29",
+    "@not-govuk/component-test-helpers": "^0.1.30",
     "@types/react": "^16.9.35",
     "jest": "^26.1.0",
     "ts-jest": "^26.1.1",

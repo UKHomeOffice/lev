@@ -1,6 +1,7 @@
 import { makeExecutableSchema } from '@graphql-tools/schema';
 import { errors } from '@not-govuk/engine';
-import { MockClient, V1Birth } from '@ho-lev/client';
+import { ApiClient, MockClient, V1Birth } from '@ho-lev/client';
+import config from './config';
 
 // The GraphQL schema in string form
 const typeDefs = `
@@ -39,12 +40,12 @@ type V1BirthRegistrar {
 }
 
 type V1BirthInformant {
-  forenames: String!
-  surname: String!
+  forenames: String
+  surname: String
   address: String
-  qualification: String!
-  signature: String!
-  signatureIsMark: Boolean!
+  qualification: String
+  signature: String
+  signatureIsMark: Boolean
 }
 
 type V1BirthChild {
@@ -55,7 +56,7 @@ type V1BirthChild {
   dateOfBirth: String!
   birthplace: String!
   originalPrefix: String
-  originalForenames: String!
+  originalForenames: String
   originalSuffix: String
   sex: String!
 }
@@ -66,7 +67,7 @@ type V1BirthMother {
   prefix: String
   suffix: String
   birthplace: String!
-  occupation: String!
+  occupation: String
   aliases: [V1BirthFullName]!
   maidenSurname: String!
   marriageSurname: String!
@@ -78,7 +79,7 @@ type V1BirthFather {
   prefix: String
   suffix: String
   birthplace: String!
-  occupation: String!
+  occupation: String
   aliases: [V1BirthFullName]!
   deceased: Boolean!
 }
@@ -128,7 +129,11 @@ const redactBirth = roles => {
   }
 }
 
-const Client = MockClient;
+const Client = (
+  config.api.host
+    ? ApiClient(config.api)
+    : MockClient()
+);
 
 // The resolvers
 const resolvers = {
@@ -139,18 +144,10 @@ const resolvers = {
       if (!hasAccess(roles, 'birth')) {
         return new errors.ForbiddenError(`You do not have permission to access the resource 'v1Birth'.`);
       } else {
-        const client = Client();
+        const client = Client(context?.auth?.accessToken);
         const data = await client.readV1Birth(id);
 
-        if (data instanceof Error) {
-          return data;
-        } else {
-          try {
-            return redactBirth(roles)(data);
-          } catch (e) {
-            return e;
-          }
-        }
+        return redactBirth(roles)(data);
       }
     },
     v1Births: async (root, { forenames, surname, dateOfBirth }, context): Promise<V1Birth[] | Error> => {
@@ -159,22 +156,14 @@ const resolvers = {
       if (!hasAccess(roles, 'birth')) {
         return new errors.ForbiddenError(`You do not have permission to access the resource 'v1Birth'.`);
       } else {
-        const client = Client();
+        const client = Client(context?.auth?.accessToken);
         const data = await client.searchV1Birth({
           forenames,
           surname,
           dateOfBirth
         });
 
-        if (data instanceof Error) {
-          return data;
-        } else {
-          try {
-            return data.map(redactBirth(roles));
-          } catch (e) {
-            return e;
-          }
-        }
+        return data.map(redactBirth(roles));
       }
     }
   }

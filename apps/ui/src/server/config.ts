@@ -26,6 +26,10 @@ const serverConfig = {
       redirectUri: process.env.OIDC_REDIRECT_URI || 'http://localhost:8080'
     }
   },
+  api: {
+    host: process.env.API_HOST || (!devMode && 'api.dev.notprod.lev.homeoffice.gov.uk'),
+    port: Number(process.env.API_PORT) || 443
+  },
   env,
   httpd: {
     host: process.env.LISTEN_HOST || '0.0.0.0',

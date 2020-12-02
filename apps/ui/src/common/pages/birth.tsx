@@ -135,6 +135,15 @@ const Page: FC<PageProps> = ({ location, signInHRef }) => {
       : undefined
     )
   );
+
+  const error = gql?.error && (
+    <pre>
+      <code>
+        {gql.error.toString()}
+      </code>
+    </pre>
+  );
+
   const results: BirthRecord[] = gql?.data?.v1Births?.map(processV1Birth);
   const selected: BirthRecord = (
     results
@@ -192,7 +201,7 @@ const Page: FC<PageProps> = ({ location, signInHRef }) => {
           </div>
           <div className="govuk-grid-column-two-thirds">
             { gql?.loading ? loading : (
-              gql?.error ? gql.error : (
+              gql?.error ? error : (
                 !results && !details ? (
                   <div style={{ textAlign: 'center' }}>
                     <h4>Did you know?</h4>

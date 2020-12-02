@@ -1,6 +1,7 @@
 import { makeExecutableSchema } from '@graphql-tools/schema';
 import { errors } from '@not-govuk/engine';
-import { MockClient, V1Birth } from '@ho-lev/client';
+import { ApiClient, MockClient, V1Birth } from '@ho-lev/client';
+import config from './config';
 
 // The GraphQL schema in string form
 const typeDefs = `
@@ -128,7 +129,11 @@ const redactBirth = roles => {
   }
 }
 
-const Client = MockClient;
+const Client = (
+  config.api.host
+    ? ApiClient(config.api)
+    : MockClient()
+);
 
 // The resolvers
 const resolvers = {
@@ -139,7 +144,7 @@ const resolvers = {
       if (!hasAccess(roles, 'birth')) {
         return new errors.ForbiddenError(`You do not have permission to access the resource 'v1Birth'.`);
       } else {
-        const client = Client();
+        const client = Client(context?.auth?.accessToken);
         const data = await client.readV1Birth(id);
 
         return redactBirth(roles)(data);
@@ -151,7 +156,7 @@ const resolvers = {
       if (!hasAccess(roles, 'birth')) {
         return new errors.ForbiddenError(`You do not have permission to access the resource 'v1Birth'.`);
       } else {
-        const client = Client();
+        const client = Client(context?.auth?.accessToken);
         const data = await client.searchV1Birth({
           forenames,
           surname,

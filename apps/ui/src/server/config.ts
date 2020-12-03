@@ -36,6 +36,7 @@ const serverConfig = {
     port: Number(process.env.LISTEN_PORT) || 8080
   },
   mode: (process.env.MODE || 'server') as Mode,
+  requiredRoles: [process.env.ENVIRONMENT || 'dev'],
   ssrOnly: !!(process.env.SSR_ONLY && process.env.SSR_ONLY.match(/(yes|true)/i))
 };
 

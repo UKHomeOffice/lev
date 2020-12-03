@@ -105,7 +105,9 @@ type V1BirthStatus {
 `;
 
 const hasAccess = (roles: string[], resource: string): boolean => (
-  roles.includes(resource)
+  [ ...config.requiredRoles, resource ].reduce((
+    (acc, cur) => acc && roles.includes(cur)
+  ), true)
 );
 
 const Redact = (roles: string[]) => (obj: object) => (key: string, role: string) => {

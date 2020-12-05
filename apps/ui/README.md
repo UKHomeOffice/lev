@@ -1,7 +1,61 @@
-Ho Lev - Ui
-===
+LEV - User Interface
+====================
 
 User interface prototype.
+
+
+Usage
+=====
+
+This application can be configured using the following environment variables:
+
+- **`LISTEN_HOST`** (default: `0.0.0.0`)
+  The hostname to bind to.
+- **`LISTEN_PORT`** (default: `8080`)
+  The port to listen on.
+- **`ENVIRONMENT`** (default: `dev`)
+  The name of the staging environment.
+- **`API_HOST`** (default: `api.${ENVIRONMENT}.notprod.lev.homeoffice.gov.uk`)
+  The hostname for the instance of LEV API you wish to access.
+- **`API_PORT`** (default: `443`)
+  The port on which to access the API.
+- **`SSR_ONLY`** (default: `false`)
+  Whether to render only on the server. Normally rendering will be isomorphic /
+  universal. i.e. The application will be rendered first on the server and then
+  the client will take over if possible. Server rendering alone may offer better
+  accessibility at the expense of UX in general.
+- **`SESSIONS_SECRET`** (default: `changeme`)
+  A secret used for encrypting the cookie(s) that hold the users session. This
+  should be set to a random string and managed as a secret in order to prevent
+  bad actors from decrypting the session data.
+- **`AUTH_METHOD`** (default: `oidc`)
+  The method to use for authentication. Options include:
+  - `oidc`: OpenID Connect
+  - `headers`: Blindly accept authentication from upstream HTTP headers. You
+    must be running behind an authentication proxy for this to be at all secure.
+  - `dummy`: Dummy authentication based on hard-coded configuration. Insecure.
+- **`OIDC_ISSUER`** (default: `https://sso-dev.notprod.homeoffice.gov.uk/auth/realms/lev/`)
+  URL for the issuer of tokens when using OpenID Connect for authentication.
+- **`OIDC_CLIENT_ID`** (default: `local-dev`)
+  The client ID to use with OpenID connect.
+- **`OIDC_CLIENT_SECRET`**
+  The client secret to use with OpenID Connect. Required for 'confidential'
+  Keycloak clients. You should use this wherever possible and definitely in
+  production.
+- **`OIDC_REDIRECT_URI`** (default: `http://localhost:8080`)
+  The URI that the OIDC issuer should redirect back to. This should be the
+  public address of your service.
+- **`AUTH_HEADER_USERNAME`** (default: `x-auth-username`)
+  The request header from which to accept the username when using HTTP header
+  "authentication".
+- **`AUTH_HEADER_GROUPS`** (default: `x-auth-groups`)
+  The request header from which to accept the user's groups when using HTTP
+  header "authentication".
+- **`AUTH_HEADER_ROLES`** (default: `x-auth-roles`)
+  The request header from which to accept the user's roles when using HTTP
+  header "authentication".
+
+**Note:** You should ensure that you configure `SESSIONS_SECRET` in production.
 
 
 Welcome to your new isomorphic React application
@@ -40,7 +94,7 @@ experience on clients that can support it.
 Notable files and directories
 -----------------------------
 
-- `dest/`: Directory containing compiled versions of source code and assets.
+- `dist/`: Directory containing compiled versions of source code and assets.
 - `src/client/`: Source code that is only run on the client.
 - `src/client/index.ts`: The entry-point for the client-side bundle.
 - `src/common/`: Source code that is run on both the client and the server.

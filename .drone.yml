@@ -1,0 +1,71 @@
+matrix:
+  DOCKER_USERNAME:
+    - ukhomeofficedigital+lev
+  DOCKER_REGISTRY:
+    - quay.io
+pipeline:
+  deploy_ui:
+    image: quay.io/ukhomeofficedigital/lev-ci
+    secrets:
+      - DOCKER_PASSWORD
+      - KUBE_SERVER
+      - KUBE_NAMESPACE
+      - KUBE_TOKEN
+      - KUBE_DEPLOYMENT_UI
+      - KUBE_CONTAINER_UI
+    environment:
+      - DOCKER_HOST=tcp://172.17.0.1:2375
+    commands:
+      - docker login -u "${DOCKER_USERNAME}" -p "$${DOCKER_PASSWORD}" "${DOCKER_REGISTRY}"
+      - cd 'apps/ui'
+      - make docker-push
+      - image=$(make -s docker-ref)
+      - kubectl="kubectl --insecure-skip-tls-verify --server=$${KUBE_SERVER} --namespace=$${KUBE_NAMESPACE} --token=$${KUBE_TOKEN}"
+      - $${kubectl} scale deployment "$${KUBE_DEPLOYMENT_UI}" --replicas 2
+      - $${kubectl} set image "deployment/$${KUBE_DEPLOYMENT_UI}" "$${KUBE_CONTAINER_UI}=$${image}"
+      - $${kubectl} rollout status "deployment/$${KUBE_DEPLOYMENT_UI}"
+      - $${kubectl} scale deployment "$${KUBE_DEPLOYMENT_UI}" --replicas 1
+    when:
+      branch: master
+      event: push
+  promote_to_uat:
+    image: quay.io/ukhomeofficedigital/drone-trigger:latest
+    secrets: [ drone_token ]
+    drone_server: https://drone-gitlab.acp.homeoffice.gov.uk
+    repo: lev/levops
+    branch: master
+    event: push
+    deploy_to: uat
+    when:
+      branch: master
+      event: push
+      status: success
+  notify_slack_success:
+    image: plugins/slack:1.0
+    secrets: [ slack_webhook ]
+    channel: general
+    username: Drone
+    template: >
+      *Deployed {{repo.name}} to Dev* - <{{build.link}}|#{{build.number}}>
+    when:
+      branch: master
+      event: push
+      status: success
+  notify_slack_failure:
+    image: plugins/slack
+    secrets: [ slack_webhook ]
+    channel: alerts
+    username: Drone
+    template: >
+      *Failed to deploy {{repo.name}} to Dev*
+
+      Author: {{build.author}}
+
+      Duration: {{since job.started}}
+      Job: <{{build.link}}|#{{build.number}}>
+
+      Commit: {{build.commit}}
+    when:
+      branch: master
+      event: push
+      status: failure

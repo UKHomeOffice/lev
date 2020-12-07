@@ -18,13 +18,7 @@ pipeline:
     commands:
       - docker login -u "${DOCKER_USERNAME}" -p "$${DOCKER_PASSWORD}" "${DOCKER_REGISTRY}"
       - cd 'apps/ui'
-      - make docker-push
-      - image=$(make -s docker-ref)
-      - kubectl="kubectl --insecure-skip-tls-verify --server=$${KUBE_SERVER} --namespace=$${KUBE_NAMESPACE} --token=$${KUBE_TOKEN}"
-      - $${kubectl} scale deployment "$${KUBE_DEPLOYMENT_UI}" --replicas 2
-      - $${kubectl} set image "deployment/$${KUBE_DEPLOYMENT_UI}" "$${KUBE_CONTAINER_UI}=$${image}"
-      - $${kubectl} rollout status "deployment/$${KUBE_DEPLOYMENT_UI}"
-      - $${kubectl} scale deployment "$${KUBE_DEPLOYMENT_UI}" --replicas 1
+      - make deploy kubectl="kubectl --insecure-skip-tls-verify --server=$${KUBE_SERVER} --namespace=$${KUBE_NAMESPACE} --token=$${KUBE_TOKEN}"
     when:
       branch: master
       event: push

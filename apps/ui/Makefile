@@ -1,13 +1,18 @@
 DOCKER_IMAGE ?= lev-ui
 DOCKER_REGISTRY ?= quay.io
 DOCKER_REPO ?= $(DOCKER_REGISTRY)/ukhomeofficedigital/$(DOCKER_IMAGE)
+KUBE_CONTEXT ?= lev-dev
+KUBE_DEPLOYMENT_UI ?= lev-ui
+KUBE_CONTAINER_UI ?= 0-1-app
+
+kubectl ?= kubectl --context $(KUBE_CONTEXT)
 
 patch_version != jq -r '.version' 'package.json'
 minor_version != echo "$(patch_version)" | awk -F '.' '{print $$1"."$$2}'
 major_version != echo "$(patch_version)" | awk -F '.' '{print $$1}'
 full_version != echo "$(patch_version)-$${BUILD_NUMBER/%/-}$$(git rev-parse --short HEAD)"
 
-.PHONY: all build clean deps distclean docker docker-clean docker-push docker-ref node-deps test unit-test
+.PHONY: all build clean deploy deps distclean docker docker-clean docker-push node-deps test unit-test
 
 all: deps test docker
 
@@ -42,8 +47,11 @@ docker-push: docker
 	docker tag $(DOCKER_IMAGE) '$(DOCKER_REPO):$(major_version)' && docker push '$(DOCKER_REPO):$(major_version)'
 	docker tag $(DOCKER_IMAGE) '$(DOCKER_REPO):latest' && docker push '$(DOCKER_REPO):latest'
 
-docker-ref:
-	echo '$(DOCKER_REPO):$(full_version)'
+deploy: docker-push
+	$(kubectl) scale deployment "$(KUBE_DEPLOYMENT_UI)" --replicas 2
+	$(kubectl) set image "deployment/$(KUBE_DEPLOYMENT_UI)" "$(KUBE_CONTAINER_UI)=$(DOCKER_REPO):$(full_version)"
+	$(kubectl) rollout status "deployment/$(KUBE_DEPLOYMENT_UI)"
+	$(kubectl) scale deployment "$(KUBE_DEPLOYMENT_UI)" --replicas 1
 
 unit-test: node-deps
 	npm test

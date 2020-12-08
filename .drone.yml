@@ -16,7 +16,8 @@ pipeline:
     environment:
       - DOCKER_HOST=tcp://172.17.0.1:2375
     commands:
-      - docker login -u "${DOCKER_USERNAME}" -p "$${DOCKER_PASSWORD}" "${DOCKER_REGISTRY}"
+      - echo "$${DOCKER_PASSWORD}" | docker login -u "${DOCKER_USERNAME}" --password-stdin "${DOCKER_REGISTRY}"
+      - npm install -g pnpm
       - cd 'apps/ui'
       - make deploy kubectl="kubectl --insecure-skip-tls-verify --server=$${KUBE_SERVER} --namespace=$${KUBE_NAMESPACE} --token=$${KUBE_TOKEN}"
     when:

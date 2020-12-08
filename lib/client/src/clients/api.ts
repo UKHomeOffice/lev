@@ -1,4 +1,5 @@
 import fetch from 'cross-fetch';
+import https from 'https';
 import { stringify } from 'qs';
 import { V1Birth } from '@ho-lev/test-data';
 import { V1BirthTerms } from '../resources/v1-birth';
@@ -7,11 +8,13 @@ import { LevClient, ReadFn, SearchFn } from './common';
 export type ApiOptions = {
   host: string
   port: number
+  tlsVerify: boolean
 };
 
 export const ApiClient: LevClient<ApiOptions> = ({
   host,
   port = 443,
+  tlsVerify = true
 }) => token => {
   const baseUrl = `https://${host}:${port}`;
 
@@ -21,8 +24,13 @@ export const ApiClient: LevClient<ApiOptions> = ({
       headers: {
         'Content-Type': 'application/json',
         'Authorization': `Bearer ${token}`
-      }
-    });
+      },
+      agent: (
+        tlsVerify
+          ? undefined
+          : new https.Agent({ rejectUnauthorized: false })
+      )
+    } as RequestInit);
     const text = await res.text();
 
     try {

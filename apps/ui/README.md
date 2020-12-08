@@ -19,6 +19,8 @@ This application can be configured using the following environment variables:
   The hostname for the instance of LEV API you wish to access.
 - **`API_PORT`** (default: `443`)
   The port on which to access the API.
+- **`API_TLS_VERIFY`** (default: `true`)
+  Whether to verify the API's TLS certificate.
 - **`SSR_ONLY`** (default: `false`)
   Whether to render only on the server. Normally rendering will be isomorphic /
   universal. i.e. The application will be rendered first on the server and then

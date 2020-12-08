@@ -20,6 +20,7 @@ ENV LISTEN_HOST="0.0.0.0" \
     LISTEN_PORT="8080" \
     API_HOST="api.dev.notprod.lev.homeoffice.gov.uk" \
     API_PORT="443" \
+    API_TLS_VERIFY="true" \
     SSR_ONLY="false" \
     SESSIONS_SECRET="changeme" \
     AUTH_METHOD="oidc" \

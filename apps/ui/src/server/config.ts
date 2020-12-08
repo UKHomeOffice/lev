@@ -5,6 +5,9 @@ const env = process.env.NODE_ENV as NodeEnv;
 const devMode = env === NodeEnv.Development;
 const stagingEnvironment = process.env.ENVIRONMENT || 'dev';
 
+const defaultsFalse = (v: string): boolean => (v || '').match(/(true|yes|on)/i) !== null;
+const defaultsTrue = (v: string): boolean => (v || '').match(/(false|no|off)/i) === null;
+
 const serverConfig = {
   ...commonConfig,
   auth: {
@@ -36,7 +39,8 @@ const serverConfig = {
   },
   api: {
     host: process.env.API_HOST || (!devMode && `api.${stagingEnvironment}.notprod.lev.homeoffice.gov.uk`),
-    port: Number(process.env.API_PORT) || 443
+    port: Number(process.env.API_PORT) || 443,
+    tlsVerify: defaultsTrue(process.env.API_TLS_VERIFY)
   },
   env,
   httpd: {

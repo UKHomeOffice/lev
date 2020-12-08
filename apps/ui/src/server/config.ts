@@ -3,6 +3,7 @@ import commonConfig from '../common/config';
 
 const env = process.env.NODE_ENV as NodeEnv;
 const devMode = env === NodeEnv.Development;
+const stagingEnvironment = process.env.ENVIRONMENT || 'dev';
 
 const serverConfig = {
   ...commonConfig,
@@ -27,7 +28,7 @@ const serverConfig = {
     }
   },
   api: {
-    host: process.env.API_HOST || (!devMode && 'api.dev.notprod.lev.homeoffice.gov.uk'),
+    host: process.env.API_HOST || (!devMode && `api.${stagingEnvironment}.notprod.lev.homeoffice.gov.uk`),
     port: Number(process.env.API_PORT) || 443
   },
   env,
@@ -36,7 +37,7 @@ const serverConfig = {
     port: Number(process.env.LISTEN_PORT) || 8080
   },
   mode: (process.env.MODE || 'server') as Mode,
-  requiredRoles: [process.env.ENVIRONMENT || 'dev'],
+  requiredRoles: [ stagingEnvironment, 'preview' ],
   ssrOnly: !!(process.env.SSR_ONLY && process.env.SSR_ONLY.match(/(yes|true)/i))
 };
 

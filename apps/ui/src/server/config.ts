@@ -13,7 +13,14 @@ const serverConfig = {
     dummy: {
       username: 'TestUser',
       groups: [],
-      roles: ['dev', 'birth', 'death', 'marriage', 'full-details']
+      roles: [
+        'dev',
+        'preview',
+        'birth',
+        'death',
+        'marriage',
+        'full-details'
+      ]
     },
     headers: {
       usernameHeader: process.env.AUTH_HEADER_USERNAME || 'x-auth-username',

@@ -12,8 +12,8 @@ type Query {
 
 type V1Birth {
   id: Int!
-  date: String!
-  entryNumber: Int!
+  date: String
+  entryNumber: Int
   registrar: V1BirthRegistrar!
   informant1: V1BirthInformant!
   informant2: V1BirthInformant!
@@ -30,13 +30,13 @@ type V1Birth {
 }
 
 type V1BirthRegistrar {
-  signature: String!
-  designation: String!
+  signature: String
+  designation: String
   superintendentSignature: String
   superintendentDesignation: String
-  subdistrict: String!
-  district: String!
-  administrativeArea: String!
+  subdistrict: String
+  district: String
+  administrativeArea: String
 }
 
 type V1BirthInformant {
@@ -49,58 +49,58 @@ type V1BirthInformant {
 }
 
 type V1BirthChild {
-  forenames: String!
-  surname: String!
+  forenames: String
+  surname: String
   prefix: String
   suffix: String
-  dateOfBirth: String!
-  birthplace: String!
+  dateOfBirth: String
+  birthplace: String
   originalPrefix: String
   originalForenames: String
   originalSuffix: String
-  sex: String!
+  sex: String
 }
 
 type V1BirthMother {
-  forenames: String!
-  surname: String!
+  forenames: String
+  surname: String
   prefix: String
   suffix: String
-  birthplace: String!
+  birthplace: String
   occupation: String
-  aliases: [V1BirthFullName]!
-  maidenSurname: String!
-  marriageSurname: String!
+  aliases: [V1BirthFullName]
+  maidenSurname: String
+  marriageSurname: String
 }
 
 type V1BirthFather {
-  forenames: String!
-  surname: String!
+  forenames: String
+  surname: String
   prefix: String
   suffix: String
-  birthplace: String!
+  birthplace: String
   occupation: String
-  aliases: [V1BirthFullName]!
-  deceased: Boolean!
+  aliases: [V1BirthFullName]
+  deceased: Boolean
 }
 
 type V1BirthFullName {
-  forenames: String!
-  surname: String!
+  forenames: String
+  surname: String
   prefix: String
   suffix: String
 }
 
 type V1BirthStatus {
   blocked: Boolean!
-  cancelled: Boolean!
-  correction: String!
-  marginalNote: String!
-  nameUpdate: String!
-  onAuthorityOfRegistrarGeneral: Boolean!
-  potentiallyFictitious: Boolean!
-  praOrCourtOrder: String!
-  reregistration: String!
+  cancelled: Boolean
+  correction: String
+  marginalNote: String
+  nameUpdate: String
+  onAuthorityOfRegistrarGeneral: Boolean
+  potentiallyFictitious: Boolean
+  praOrCourtOrder: String
+  reregistration: String
 },
 `;
 

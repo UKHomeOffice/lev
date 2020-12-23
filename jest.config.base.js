@@ -29,7 +29,7 @@ const config = {
   ],
   globals: {
     'ts-jest': {
-      tsConfig: path.resolve(__dirname, 'tsconfig.nodejs.json')
+      tsconfig: path.resolve(__dirname, 'tsconfig.nodejs.json')
     }
   }
 };

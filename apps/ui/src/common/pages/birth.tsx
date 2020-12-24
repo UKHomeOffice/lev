@@ -1,7 +1,7 @@
 import { useQuery, gql } from '@apollo/client';
 import { FC, Fragment, createElement as h } from 'react';
 import { PageProps } from '@not-govuk/app-composer';
-import { A, Details, Form, after, exactLength, integer, past, required } from '@not-govuk/components';
+import { A, DateInput, Details, Form, after, exactLength, integer, past, required } from '@not-govuk/components';
 import { BirthSummary } from '@ho-lev/birth-summary';
 import { BirthDetails, BirthRecord } from '@ho-lev/birth-details';
 import { EventList } from '@ho-lev/event-list';
@@ -98,6 +98,11 @@ const Page: FC<PageProps> = ({ location, signInHRef }) => {
   const isLoggedIn = !!(userInfo && userInfo.username);
   const hasAccess = !!(userInfo && userInfo.roles?.includes('birth'));
   const query = location.query || {};
+  const systemNumber = query['system-number'];
+  const forenames = query['forenames'];
+  const surname = query['surname'];
+  const dateOfBirth = query['dob'];
+  const dob = dateOfBirth && DateInput.deformat(dateOfBirth);
 
   const mustLogIn = (
     <Fragment>
@@ -116,20 +121,20 @@ const Page: FC<PageProps> = ({ location, signInHRef }) => {
   );
   const noResults = (
     <Fragment>
-      Sorry, no results were found for {query['system-number'] || `${query['forenames']} ${query['surname']?.toUpperCase()} ${query['dob']}`}.
+      Sorry, no results were found for {systemNumber || `${forenames} ${surname?.toUpperCase()} ${dateOfBirth}`}.
     </Fragment>
   );
 
   const gql = hasAccess && (
-    query['system-number']
-    ? useQuery(birthQuery, { variables: { id: Number(query['system-number']) } })
+    systemNumber
+    ? useQuery(birthQuery, { variables: { id: Number(systemNumber) } })
     : (
-      query['forenames'] && query['surname'] && query['dob']
+      forenames && surname && dateOfBirth
       ? useQuery(birthsQuery, {
         variables: {
-          forenames: query['forenames'],
-          surname: query['surname'],
-          dateOfBirth: query['dob']
+          forenames,
+          surname,
+          dateOfBirth
         }
       })
       : undefined
@@ -161,7 +166,7 @@ const Page: FC<PageProps> = ({ location, signInHRef }) => {
       { !hasAccess ? noAccess : (
         <div className="govuk-grid-row">
           <div className="govuk-grid-column-one-third">
-            <Form action="/birth" method="get">
+            <Form action="?" method="get" initialValues={{ surname, forenames, dob }}>
               <Form.TextInput
                 name="surname"
                 label={<h4>Surname</h4>}
@@ -185,7 +190,7 @@ const Page: FC<PageProps> = ({ location, signInHRef }) => {
               <Form.Submit value="Search" />
             </Form>
             <hr className="govuk-section-break govuk-section-break--m govuk-section-break--visible" />
-            <Form action="/birth" method="get">
+            <Form action="?" method="get" initialValues={{ 'system-number': systemNumber }}>
               <Form.TextInput
                 name="system-number"
                 prettyName="System number"

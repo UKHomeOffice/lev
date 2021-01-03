@@ -2,14 +2,17 @@ import { useQuery, gql } from '@apollo/client';
 import { FC, Fragment, createElement as h } from 'react';
 import { Helmet } from 'react-helmet-async';
 import { PageProps } from '@not-govuk/app-composer';
-import { A, DateInput, Details, Form, after, exactLength, integer, past, required } from '@not-govuk/components';
+import { Details, Form, after, exactLength, date, integer, past, required, withForm } from '@not-govuk/components';
 import { BirthSummary } from '@ho-lev/birth-summary';
 import { BirthDetails, BirthRecord } from '@ho-lev/birth-details';
+import { DateInput } from '@ho-lev/date-input';
 import { EventList } from '@ho-lev/event-list';
 import { useUserInfo } from '@not-govuk/user-info';
 import { processV1Birth } from '../lib/process-records';
 
 export const title = 'Births';
+
+const FormDateInput = withForm(DateInput, [date()]);
 
 const systemNumberImage = require('../../../assets/system-number-hint.png').default;
 
@@ -104,7 +107,7 @@ const Page: FC<PageProps> = ({ location, signInHRef }) => {
   const systemNumber = query['system-number'];
   const forenames = query['forenames'];
   const surname = query['surname'];
-  const dateOfBirth = query['dob'];
+  const dateOfBirth = query['dob'] && DateInput.format(query['dob']);
   const dob = dateOfBirth && DateInput.deformat(dateOfBirth);
 
   const mustLogIn = (
@@ -183,10 +186,10 @@ const Page: FC<PageProps> = ({ location, signInHRef }) => {
                 label={<h4>Forename(s)</h4>}
                 validators={[required()]}
               />
-              <Form.DateInput
+              <FormDateInput
                 name="dob"
                 prettyName="date of birth"
-                label={<h4>Date of birth?</h4>}
+                label={<h4>Date of birth</h4>}
                 validators={[
                   required(),
                   past(),

@@ -2,12 +2,13 @@ import { Meta, Preview, Props, Story } from '@not-govuk/docs-components';
 import { BirthSummary } from '@ho-lev/birth-summary';
 import { EventList } from '../src/EventList';
 import readMe from '../README.md';
-export const title = 'Event list';
 
 <Meta
   title="Event list"
   component={ EventList }
   parameters={ {
+    chromatic: { viewports: [640, 480] },
+    description: 'A React component to show a list of life events.',
     jest: ['EventList'],
     notes: readMe
   } }

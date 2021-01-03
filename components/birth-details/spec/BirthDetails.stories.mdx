@@ -1,12 +1,13 @@
 import { Meta, Preview, Props, Story } from '@not-govuk/docs-components';
 import { BirthDetails } from '../src/BirthDetails';
 import readMe from '../README.md';
-export const title = 'Birth details';
 
 <Meta
   title="Birth details"
   component={ BirthDetails }
   parameters={ {
+    chromatic: { viewports: [640, 480] },
+    description: 'A React component to show full information on a birth registration.',
     jest: ['BirthDetails'],
     notes: readMe
   } }

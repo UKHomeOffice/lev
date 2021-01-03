@@ -1,5 +1,6 @@
 import { useQuery, gql } from '@apollo/client';
 import { FC, Fragment, createElement as h } from 'react';
+import { Helmet } from 'react-helmet-async';
 import { PageProps } from '@not-govuk/app-composer';
 import { A, DateInput, Details, Form, after, exactLength, integer, past, required } from '@not-govuk/components';
 import { BirthSummary } from '@ho-lev/birth-summary';
@@ -7,6 +8,8 @@ import { BirthDetails, BirthRecord } from '@ho-lev/birth-details';
 import { EventList } from '@ho-lev/event-list';
 import { useUserInfo } from '@not-govuk/user-info';
 import { processV1Birth } from '../lib/process-records';
+
+export const title = 'Births';
 
 const systemNumberImage = require('../../../assets/system-number-hint.png').default;
 
@@ -162,6 +165,9 @@ const Page: FC<PageProps> = ({ location, signInHRef }) => {
 
   return (
     <Fragment>
+      <Helmet>
+        <title>{title} - LEV</title>
+      </Helmet>
       <h1>Births</h1>
       { !hasAccess ? noAccess : (
         <div className="govuk-grid-row">
@@ -245,4 +251,3 @@ const Page: FC<PageProps> = ({ location, signInHRef }) => {
 };
 
 export default Page;
-export const title = 'Births';

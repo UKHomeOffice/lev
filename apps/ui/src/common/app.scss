@@ -9,3 +9,8 @@ dl {
     margin-bottom: 0.5em;
   }
 }
+
+.govuk-width-container {
+  margin-right: max(30px, calc(15px + env(safe-area-inset-right))) !important;
+  margin-left: max(30px, calc(15px + env(safe-area-inset-left))) !important;
+}

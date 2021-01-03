@@ -1,6 +1,6 @@
 import { FC, createElement as h } from 'react';
 import { PageProps } from '@not-govuk/app-composer';
-import { Page } from '@not-govuk/components';
+import { NotGovUKPage } from '@not-govuk/components';
 import { useUserInfo } from '@not-govuk/user-info';
 
 import './app.scss';
@@ -10,8 +10,7 @@ export const PageWrap: FC<PageProps> = ({ signInHRef, signOutHRef, children }) =
     { href: '/birth', text: 'Births' },
     { href: '/death', text: 'Deaths' },
     { href: '/marriage', text: 'Marriages' },
-    { href: '/partnership', text: 'Civil partnerships' },
-    { href: '/accessibility-statement', text: 'Accessibility statement' }
+    { href: '/partnership', text: 'Civil partnerships' }
   ];
   const userInfo = useUserInfo();
   const sign = (
@@ -27,17 +26,24 @@ export const PageWrap: FC<PageProps> = ({ signInHRef, signOutHRef, children }) =
   );
 
   return (
-    <Page
-      className="wide"
+    <NotGovUKPage
+      department="home-office"
       feedbackHref="/feedback"
       navigation={navigation}
+      meta={[
+        { href: '/accessibility-statement', text: 'Accessibility statement' },
+        { href: '/feedback', text: "Contact" }
+      ]}
+      organisationText="HMPO"
       phase="prototype"
-      title="Life Event Verification"
+      serviceName="Life Event Verification"
       signOutHref={sign.href}
       signOutText={sign.text}
+      title="Life Event Verification"
+      maxContentsWidth={-1}
     >
       {children}
-    </Page>
+    </NotGovUKPage>
   );
 };
 

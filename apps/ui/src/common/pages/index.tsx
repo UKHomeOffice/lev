@@ -1,9 +1,15 @@
 import { FC, createElement as h } from 'react';
+import { Helmet } from 'react-helmet-async';
 import { PageProps } from '@not-govuk/app-composer';
 import { A } from '@not-govuk/components';
 
+export const title = 'Home';
+
 const Page: FC<PageProps> = props => (
   <div className="govuk-grid-row">
+    <Helmet>
+      <title>Life Event Verification</title>
+    </Helmet>
     <div className="govuk-grid-column-two-thirds">
       <h1>Welcome to LEV</h1>
       <p>Choose the event to search for:</p>
@@ -18,4 +24,3 @@ const Page: FC<PageProps> = props => (
 );
 
 export default Page;
-export const title = 'Home';

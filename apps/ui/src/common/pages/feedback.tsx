@@ -1,9 +1,15 @@
-import { FC, Fragment, createElement as h } from 'react';
+import { FC, createElement as h } from 'react';
+import { Helmet } from 'react-helmet-async';
 import { PageProps } from '@not-govuk/app-composer';
-import { Form, after, email, exactLength, integer, past, required } from '@not-govuk/components';
+import { Form, email, required } from '@not-govuk/components';
+
+export const title = 'Feedback';
 
 const Page: FC<PageProps> = props => (
   <div className="govuk-grid-row">
+    <Helmet>
+      <title>{title} - LEV</title>
+    </Helmet>
     <div className="govuk-grid-column-two-thirds">
       <h1>Feedback</h1>
       <Form action="/feedback" method="get">
@@ -25,4 +31,3 @@ const Page: FC<PageProps> = props => (
 );
 
 export default Page;
-export const title = 'Births';

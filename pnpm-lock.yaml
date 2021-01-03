@@ -148,6 +148,7 @@ importers:
       '@ho-lev/birth-details': 'link:../../components/birth-details'
       '@ho-lev/birth-summary': 'link:../../components/birth-summary'
       '@ho-lev/client': 'link:../../lib/client'
+      '@ho-lev/date-input': 'link:../../components/date-input'
       '@ho-lev/event-list': 'link:../../components/event-list'
       '@not-govuk/app-composer': 0.2.1_828060bba2612c45d557e91f1186a99e
       '@not-govuk/client-renderer': 0.2.1_f69e239d59cc0df85559350b2baee1ff
@@ -181,6 +182,7 @@ importers:
       '@ho-lev/birth-details': 'workspace:^0.1.0'
       '@ho-lev/birth-summary': 'workspace:^0.1.0'
       '@ho-lev/client': 'workspace:^0.1.0'
+      '@ho-lev/date-input': 'workspace:^0.1.0'
       '@ho-lev/event-list': 'workspace:^0.1.0'
       '@not-govuk/app-composer': ^0.2.1
       '@not-govuk/client-renderer': ^0.2.1
@@ -250,6 +252,24 @@ importers:
       '@not-govuk/link': ^0.2.1
       '@not-govuk/route-utils': ^0.2.1
       '@not-govuk/sass-base': ^0.2.1
+      '@types/react': ^16.9.35
+      jest: ^26.1.0
+      ts-jest: ^26.1.1
+      typescript: ^3.9.2
+  components/date-input:
+    dependencies:
+      '@not-govuk/component-helpers': 0.1.33
+    devDependencies:
+      '@mdx-js/react': 1.6.22
+      '@not-govuk/component-test-helpers': 0.1.33
+      '@types/react': 16.14.2
+      jest: 26.6.3
+      ts-jest: 26.4.4_jest@26.6.3+typescript@3.9.7
+      typescript: 3.9.7
+    specifiers:
+      '@mdx-js/react': ^1.6.5
+      '@not-govuk/component-helpers': ^0.1.0
+      '@not-govuk/component-test-helpers': ^0.1.0
       '@types/react': ^16.9.35
       jest: ^26.1.0
       ts-jest: ^26.1.1
@@ -4804,9 +4824,22 @@ packages:
       react-router-dom: '*'
     resolution:
       integrity: sha512-TgTjbkATo4plkKSw6Q3z+N/9nRFSurb7SSCGusThR6CaLQAb/i00rS+oONWpIbdedLfUZTJ1AIzdh400+ijvaQ==
+  /@not-govuk/component-helpers/0.1.33:
+    dev: false
+    resolution:
+      integrity: sha512-LQxHR2M8DUjJPIJkgqvG72Ko9ytbtCcO1vZM6HVnu6chWF5FXxqAJMi9sMzCOvIt34nkeAvtJRnW5L6mHIHYcQ==
   /@not-govuk/component-helpers/0.2.1:
     resolution:
       integrity: sha512-xv0f3WMW8jPDfkrBsyxqnyGBO51G21NoQxrxGWfwwcSXwrC9dx1MrwCCVtHKbrOOwU+pbmyK6hW/syr9DYCVjw==
+  /@not-govuk/component-test-helpers/0.1.33:
+    dependencies:
+      enzyme: 3.11.0
+    dev: true
+    peerDependencies:
+      react: ^16.9.35
+      react-router: ^5.1.7
+    resolution:
+      integrity: sha512-DlQEBoZGO01iqmUlkxmGUmRGaBHWi9dpbP8mRorjhFG/uDPodliKBJv3PI3RIIZ06s3AMs2uTlRFC77ennt6Ag==
   /@not-govuk/component-test-helpers/0.2.1:
     dependencies:
       enzyme: 3.11.0

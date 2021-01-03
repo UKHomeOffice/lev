@@ -1,0 +1,47 @@
+import { Meta, Preview, Props, Story } from '@not-govuk/docs-components';
+import { Form, after, past, required } from '@not-govuk/components';
+import { DateInput } from '../src/DateInput';
+import readMe from '../README.md';
+
+<Meta
+  title="Date input"
+  component={ DateInput }
+  parameters={ {
+    chromatic: { viewports: [640, 480] },
+    description: 'A form field for rapidly entering a date.',
+    jest: ['DateInput'],
+    notes: readMe
+  } }
+/>
+
+# Date input
+
+A form field for rapidly entering a date.
+
+<Preview withToolbar>
+  <Story name="DateInput">
+    <DateInput
+      name="dob"
+      label={<h2>What is your date of birth?</h2>}
+      hint="Enter the date you were born."
+    />
+  </Story>
+</Preview>
+
+<Props of={ DateInput } />
+
+
+## Stories
+### Standard
+
+A standard Date input.
+
+<Preview>
+  <Story name="Standard">
+    <DateInput
+      name="dob"
+      label={<h2>What is your date of birth?</h2>}
+      hint="Enter the date you were born."
+    />
+  </Story>
+</Preview>

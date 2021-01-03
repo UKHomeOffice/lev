@@ -21,6 +21,7 @@
     "@ho-lev/birth-details": "workspace:^0.1.0",
     "@ho-lev/birth-summary": "workspace:^0.1.0",
     "@ho-lev/client": "workspace:^0.1.0",
+    "@ho-lev/date-input": "workspace:^0.1.0",
     "@ho-lev/event-list": "workspace:^0.1.0",
     "@not-govuk/app-composer": "^0.2.1",
     "@not-govuk/client-renderer": "^0.2.1",

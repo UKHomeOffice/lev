@@ -23,8 +23,7 @@ You can see a full list of any issues we currently know about in the Non-accessi
 
 ## Feedback and contact information
 
-If you need information on this website in a different format like accessible PDF, large print, easy read, audio
-recording or braille:
+If you need information on this website in a different format like accessible PDF, large print, easy read, audio recording or braille:
 - email [lev-enquiries@digital.homeoffice.gov.uk](mailto:lev-enquiries@digital.homeoffice.gov.uk)
 - raise an issue at https://github.com/UKHomeOffice/lev/issues
 
@@ -34,8 +33,7 @@ We'll consider your request and get back to you in 30 days.
 ## Reporting accessibility problems with this website
 
 We're always looking to improve the accessibility of this website.
-If you find any problems not listed on this page or think we're not meeting accessibility requirements, contact:
-[lev-enquiries@digital.homeoffice.gov.uk](mailto:lev-enquiries@digital.homeoffice.gov.uk)
+If you find any problems not listed on this page or think we're not meeting accessibility requirements, please raise an issue with the ITNow Service desk. Other methods of notifying us about an issue can be found on the [Help with LEV](/lev-help) page.
 
 [Read tips on contacting organisation about inaccessible websites][contact-tips].
 

@@ -6,9 +6,9 @@ import './app.scss';
 
 export const PageWrap: FC<PageProps> = ({ children }) => {
   const navigation = [
-    { href: '/accessibility-statement', text: 'Accessibility statement' },
-    { href: '/lev-help', text: 'help using LEV' },
-    { href: 'https://github.com/UKHomeOffice/lev/issues/new', text: 'Contact' }
+    { href: '/get-started', text: 'Get started' },
+    { href: '/components', text: 'Components' },
+    { href: '/contributing', text: 'Contributing' }
   ];
 
   return (
@@ -18,9 +18,8 @@ export const PageWrap: FC<PageProps> = ({ children }) => {
       footerContent="Copyright (C) 2020, 2021 Crown Copyright"
       navigation={navigation}
       meta={[
-        { href: '/accessibility-statement', text: 'Accessibility statement' },
-        { href: '/lev-help', text: 'help using LEV' },
-        { href: 'https://github.com/UKHomeOffice/lev/issues/new', text: 'Contact' }
+        { href: "https://github.com/UKHomeOffice/lev", text: "GitHub" },
+        { href: "https://github.com/UKHomeOffice/lev/issues/new", text: "Contact" },
       ]}
       organisationText="HMPO"
       phase="alpha"

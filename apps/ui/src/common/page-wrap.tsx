@@ -32,8 +32,8 @@ export const PageWrap: FC<PageProps> = ({ signInHRef, signOutHRef, children }) =
       navigation={navigation}
       meta={[
         { href: '/accessibility-statement', text: 'Accessibility statement' },
-        { href: '/lev-help', text: 'help using LEV' },
-        { href: 'https://github.com/UKHomeOffice/lev/issues/new', text: 'Contact' }
+        { href: '/lev-help', text: 'Help with LEV' },
+        { href: '/feedback', text: "Contact" }
       ]}
       organisationText="HMPO"
       phase="prototype"

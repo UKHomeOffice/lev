@@ -35,7 +35,6 @@ between the hours of 9am and 5pm, Monday to Friday. (This service may be
 affected by the current pandemic crisis).
 
 ## Reporting a problem with your account
-
 If there is a problem with your user account, for example, you have the
 incorrect level of permissions or are unable to access data you need to see,
 please report the issue to:
@@ -44,13 +43,11 @@ please report the issue to:
 - Home Office IT helpdesk - for non-government users
 
 ## Reporting inaccurate data on this website
-
 If you notice inaccurate information on the site, including with any of the
 records, please notify [lev-enquiries@digital.homeoffice.gov.uk](mailto:lev-enquiries@digital.homeoffice.gov.uk) with a description of the inaccuracy and
 the page or record you found it on.
 
 ## Reporting accessibility problems with this website
-
 We're always looking to improve the accessibility of this website.
 If you find any problems not listed on this page or think we're not meeting
 accessibility requirements, contact:
@@ -60,7 +57,6 @@ For more information on accessibility, including what we are doing to meet our
 obligations, please visit our [Accessibility Statement](accessibility-statement).
 
 ## Service Level Agreement (SLA)
-
 As mentioned above, problems are dealt with in priority order, depending on
 severity.
 

@@ -190,10 +190,11 @@ const Page: FC<PageProps> = ({ location, signInHRef }) => {
                 name="dob"
                 prettyName="date of birth"
                 label={<h4>Date of birth</h4>}
+                hint="For example, 15/07/2018"
                 validators={[
                   required(),
                   past(),
-                  after("2009-07-01")()
+                  after("2009-06-30")()
                 ]}
               />
               <Form.Submit value="Search" />
@@ -219,7 +220,13 @@ const Page: FC<PageProps> = ({ location, signInHRef }) => {
                 !results && !details ? (
                   <div style={{ textAlign: 'center' }}>
                     <h4>Did you know?</h4>
-                    <p>Did you know you can enter short dates?</p>
+                    <p>Dates can be entered as:</p>
+                    <ul class="govuk-list">
+                      <li>15072018</li>
+                      <li>15/07/2018</li>
+                      <li>15.07.2018</li>
+                      <li>2018-07-15</li>
+                    </ul>
                   </div>
                 ) : (
                   !results ? details : (

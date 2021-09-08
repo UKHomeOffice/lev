@@ -50,11 +50,15 @@ DateInput.format = (v: string): string => {
     : (
       v.includes('/')
         ? v.split('/')
-        : [
-          v.slice(0, 2),
-          v.slice(2, 4),
-          v.slice(4)
-        ]
+        : (
+          v.includes('.')
+            ? v.split('.')
+            : [
+              v.slice(0, 2),
+              v.slice(2, 4),
+              v.slice(4)
+            ]
+        )
     )
   );
 

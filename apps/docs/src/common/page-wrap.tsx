@@ -18,6 +18,7 @@ export const PageWrap: FC<PageProps> = ({ children }) => {
       footerContent="Copyright (C) 2020, 2021 Crown Copyright"
       navigation={navigation}
       meta={[
+        { href: '/accessibility-statement', text: 'Accessibility statement' },
         { href: "https://github.com/UKHomeOffice/lev", text: "GitHub" },
         { href: "https://github.com/UKHomeOffice/lev/issues/new", text: "Contact" },
       ]}

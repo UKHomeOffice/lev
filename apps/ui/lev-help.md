@@ -1,7 +1,7 @@
-# Help with LEV
+# Help using LEV
 
 If you spot a problem with any page or function of this website, please let us
-know.
+know, using the contact methods below.
 
 The LEV service is available 24/7, with support provided during business hours
 (8am to 6pm, Monday to Friday).
@@ -9,14 +9,13 @@ The LEV service is available 24/7, with support provided during business hours
 ## Reporting a problem with this website
 ### Initial report
 If there is a technical issue preventing you from using the website, HMPO users
-must raise an incident via the ITNow Service Desk, or via the HMPO Service Desk
-for those HMPO End Users who are using residual AdminIT.
+must raise an incident via the ITNow Service Desk.
 
 Non-HMPO users can raise a ticket with their own Service Desk support,
 who will contact the Home Office IT helpdesk.
 
 Non-government users should contact contact the Home Office IT helpdesk directly
-on 0845 000 0050 or by email at [ITnowServiceDesk@homeoffice.gov.uk](ITnowServiceDesk@homeoffice.gov.uk)
+on 0845 000 0050 or by email at [ITnowServiceDesk@homeoffice.gov.uk](mailto:ITnowServiceDesk@homeoffice.gov.uk)
 to report problems.
 
 Triage will be performed by our level-2 support. All calls should be assigned
@@ -63,10 +62,10 @@ immediate workaround, is a priority 2 incident. These incidents will be
 responded to within 8 hours.</li>
 <li>Loss of service for a small number of users, or for a moderate number of
 users where a workaround is possible, is a priority 3 incident. These incidents
-will be responded to within 20 working hours. (Working hours are 8am to 6pm,
+will be responded to within 20 working hours (working hours are 8am to 6pm,
 Monday to Friday).</li>
 <li>Incidents which have little to no significant impact for users, or cause a
 minor inconvenience, are treated as a priority 4 incident. These incidents will
-be responded to within 40 working hours. (Working hours are 8am to 6pm,
+be responded to within 40 working hours (working hours are 8am to 6pm,
 Monday to Friday).</li>
 </ol>

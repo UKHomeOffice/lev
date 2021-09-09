@@ -44,21 +44,26 @@ DateInput.format = (v: string): string => {
   const isSet = (v: any): boolean => (
     !!(v || v === 0)
   );
+
   const [ day, month, year ] = (
     v.includes('-')
-    ? v.split('-').reverse()
+    ? (
+        v.slice(2,3) === '-'
+          ? v.split('-')
+          : v.split('-').reverse()
+      )
     : (
       v.includes('/')
         ? v.split('/')
         : (
-          v.includes('.')
-            ? v.split('.')
-            : [
-              v.slice(0, 2),
-              v.slice(2, 4),
-              v.slice(4)
-            ]
-        )
+            v.includes('.')
+              ? v.split('.')
+              : [
+                v.slice(0, 2),
+                v.slice(2, 4),
+                v.slice(4)
+              ]
+          )
     )
   );
 

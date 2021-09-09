@@ -221,7 +221,7 @@ const Page: FC<PageProps> = ({ location, signInHRef }) => {
                   <div style={{ textAlign: 'center' }}>
                     <h4>Did you know?</h4>
                     <p>Dates can be entered as:</p>
-                    <ul class="govuk-list">
+                    <ul className="govuk-list">
                       <li>15072018</li>
                       <li>15/07/2018</li>
                       <li>15.07.2018</li>

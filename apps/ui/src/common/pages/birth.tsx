@@ -225,6 +225,7 @@ const Page: FC<PageProps> = ({ location, signInHRef }) => {
                       <li>15072018</li>
                       <li>15/07/2018</li>
                       <li>15.07.2018</li>
+                      <li>15-07-2018</li>
                       <li>2018-07-15</li>
                     </ul>
                   </div>

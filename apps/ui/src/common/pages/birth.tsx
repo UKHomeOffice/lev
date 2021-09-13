@@ -208,6 +208,8 @@ const Page: FC<PageProps> = ({ location, signInHRef }) => {
                 validators={[required(), integer(), exactLength(9)()]}
               />
               <Details summary="What is the system number?">
+                <p>The system number is a unique 9 digit number which identifies the birth event. It is located at the
+                    bottom left of the birth certificate.</p>
                 <img src={systemNumberImage} alt="9 digit number at the bottom left of the certificate" />
               </Details>
               <Form.Submit value="Search" />

@@ -93,7 +93,7 @@ The pages served link to a JavaScript 'bundle' built by webpack that
 experience on clients that can support it.
 
 Testing
-------------
+-------
 
 e2e tests using Cypress can be run after starting the application, with:
 

@@ -16,7 +16,7 @@ describe("birth search", () => {
     it('valid record search using submit button', () => {
       cy.get('#system-number-input')
         .type('123456789')
-        .get('.govuk-button').eq(1)
+        .get('#number-submit')
         .click()
         .get('.govuk-heading-l')
         .contains('Joan Narcissus Ouroboros SMITH 08/08/2008')

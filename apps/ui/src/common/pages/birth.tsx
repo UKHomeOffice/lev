@@ -196,7 +196,7 @@ const Page: FC<PageProps> = ({ location, signInHRef }) => {
                   after("2009-07-01")()
                 ]}
               />
-              <Form.Submit value="Search" />
+              <Form.Submit id="details-submit" value="Search" />
             </Form>
             <hr className="govuk-section-break govuk-section-break--m govuk-section-break--visible" />
             <Form action="?" method="get" initialValues={{ 'system-number': systemNumber }}>
@@ -212,7 +212,7 @@ const Page: FC<PageProps> = ({ location, signInHRef }) => {
                     bottom left of the birth certificate.</p>
                 <img src={systemNumberImage} alt="9 digit number at the bottom left of the certificate" />
               </Details>
-              <Form.Submit value="Search" />
+              <Form.Submit id="number-submit" value="Search" />
             </Form>
           </div>
           <div className="govuk-grid-column-two-thirds">

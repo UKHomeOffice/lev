@@ -81,7 +81,7 @@ jobs:
         run: cd apps/ui/
 
       - name: Cypress e2e testing
-        uses: cypress-io/github-action@v2
+        run: cypress run
 
       - name: Clean-up
         run: npm run all:clean

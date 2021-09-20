@@ -212,7 +212,7 @@ const Page: FC<PageProps> = ({ location, signInHRef }) => {
                     bottom left of the birth certificate.</p>
                 <img src={systemNumberImage} alt="9 digit number at the bottom left of the certificate" />
               </Details>
-              <Form.Submit value="Search" />
+              <Form.Submit value="Lookup" />
             </Form>
           </div>
           <div className="govuk-grid-column-two-thirds">

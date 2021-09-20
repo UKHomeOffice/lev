@@ -92,6 +92,12 @@ The pages served link to a JavaScript 'bundle' built by webpack that
 'hydrates' the website once it is loaded, allowing for an enhanced user
 experience on clients that can support it.
 
+Testing
+-------
+
+e2e tests using Cypress can be run after starting the application, with:
+
+`npm test`
 
 Notable files and directories
 -----------------------------

@@ -77,10 +77,13 @@ jobs:
       - name: Build everything
         run: npm run all:build
 
+      - name: Start server in the background for e2e testing
+        run: npm start &
+
       - name: Cypress run
         uses: cypress-io/github-action@v2
         with:
-          project: ./apps/ui/
+          working-directory: ./apps/ui/
 
       - name: Clean-up
         run: npm run all:clean

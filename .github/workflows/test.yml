@@ -79,11 +79,14 @@ jobs:
 
       - name: Start server in the background for e2e testing
         run: npm start &
+        working-directory: ./apps/ui/
 
       - name: Cypress run
         uses: cypress-io/github-action@v2
         with:
           install: false
+          wait-on: 'http://localhost:8080'
+          wait-on-timeout: 60
           working-directory: ./apps/ui/
 
       - name: Clean-up

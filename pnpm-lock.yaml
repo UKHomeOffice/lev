@@ -21121,6 +21121,7 @@ packages:
       micromatch: 3.1.10
       minimist: 1.2.5
       walker: 1.0.7
+    deprecated: some dependency vulnerabilities fixed, support for node < 10 dropped, and newer ECMAScript syntax/features added
     dev: true
     engines:
       node: 6.* || 8.* || >= 10.*

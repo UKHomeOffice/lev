@@ -77,18 +77,15 @@ jobs:
       - name: Build everything
         run: npm run all:build
 
-      - name: Start server in the background for e2e testing
-        run: npm start &
-        working-directory: ./apps/ui/
-
       - name: Cypress run
         uses: cypress-io/github-action@v2
         env:
           DEBUG: 'cypress:*'
         with:
+          start: npm start &
           install: false
           wait-on: 'http://localhost:8080'
-          wait-on-timeout: 60
+          wait-on-timeout: 120
           working-directory: ./apps/ui/
 
       - name: Clean-up

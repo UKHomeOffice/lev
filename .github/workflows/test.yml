@@ -81,8 +81,6 @@ jobs:
         uses: cypress-io/github-action@v2
         env:
           DEBUG: 'cypress:*'
-          CYPRESS_RECORD_KEY: 'test'
-          CYPRESS_PROJECT_ID: 'test'
         with:
           start: npm start &
           install: false
@@ -90,6 +88,13 @@ jobs:
           wait-on: 'http://localhost:8080'
           wait-on-timeout: 120
           working-directory: ./apps/ui/
+
+      - name: save screenshots of failed tests
+        uses: actions/upload-artifact@v1
+        if: failure()
+        with:
+          name: cypress-screenshots
+          path: ./apps/ui/cypress/screenshots
 
       - name: Clean-up
         run: npm run all:clean

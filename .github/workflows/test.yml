@@ -81,8 +81,8 @@ jobs:
         uses: cypress-io/github-action@v2
         env:
           DEBUG: 'cypress:*'
-          CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
-          CYPRESS_PROJECT_ID: ${{ secrets.PROJECT_ID }}
+          CYPRESS_RECORD_KEY: 'test'
+          CYPRESS_PROJECT_ID: 'test'
         with:
           start: npm start &
           install: false

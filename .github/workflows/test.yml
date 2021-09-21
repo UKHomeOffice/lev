@@ -83,6 +83,8 @@ jobs:
 
       - name: Cypress run
         uses: cypress-io/github-action@v2
+        env:
+          DEBUG: 'cypress:*'
         with:
           install: false
           wait-on: 'http://localhost:8080'

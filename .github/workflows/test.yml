@@ -84,7 +84,6 @@ jobs:
         with:
           start: npm start &
           install: false
-          record: true
           wait-on: 'http://localhost:8080'
           wait-on-timeout: 120
           working-directory: ./apps/ui/
@@ -93,8 +92,8 @@ jobs:
         uses: actions/upload-artifact@v1
         if: failure()
         with:
-          name: cypress-screenshots
-          path: ./apps/ui/cypress/screenshots
+          name: cypress-videos
+          path: ./apps/ui/cypress/videos
 
       - name: Clean-up
         run: npm run all:clean

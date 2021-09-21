@@ -7,21 +7,19 @@ describe("birth search", () => {
   });
   describe('search using system number', () => {
     it('valid record search pressing enter', () => {
-      cy.wait(10000)
-        .get('#system-number-input')
-        .should('be.visible')
+      cy.get('[name="system-number"]')
         .type('123456789')
         .type('{enter}')
         .get('.govuk-heading-l')
         .contains('Joan Narcissus Ouroboros SMITH 08/08/2008')
     })
-  //   it('valid record search using submit button', () => {
-  //     cy.get('#system-number-input')
-  //       .type('123456789')
-  //       .get('#number')
-  //       .click()
-  //       .get('.govuk-heading-l')
-  //       .contains('Joan Narcissus Ouroboros SMITH 08/08/2008')
-  //   })
+    it('valid record search using submit button', () => {
+      cy.get('[name="system-number"]')
+        .type('123456789')
+        .get('[value="Lookup"]')
+        .click()
+        .get('.govuk-heading-l')
+        .contains('Joan Narcissus Ouroboros SMITH 08/08/2008')
+    })
   })
 });

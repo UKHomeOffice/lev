@@ -51,12 +51,10 @@ DateInput.format = (v: string): string => {
   const matchNoDelimiters = /^(\d{8})$/.exec(v.trim())
 
   const formattedDate = (matchNoDelimiters)
-    ? DateTime.fromFormat(`${v.slice(0, 2)} ${v.slice(2, 4)} ${v.slice(4, 8)}`, 'dd MM yyyy')
+    ? DateTime.fromFormat(`${v.slice(0, 2)} ${v.slice(2, 4)} ${v.slice(4, 8)}`, 'd M yyyy')
     : (matchWithDelimiters && (matchWithDelimiters[1].length>2 || parseInt(matchWithDelimiters[1], 10)>31))
-      ? DateTime.fromFormat(`${matchWithDelimiters[1]} ${matchWithDelimiters[2]} ${matchWithDelimiters[3]}`, 'yyyy MM dd')
-      : DateTime.fromFormat(`${matchWithDelimiters[1]} ${matchWithDelimiters[2]} ${matchWithDelimiters[3]}`, 'dd MM yyyy')
-
-  console.log(formattedDate);
+      ? DateTime.fromFormat(`${matchWithDelimiters[1]} ${matchWithDelimiters[2]} ${matchWithDelimiters[3]}`, 'yyyy M d')
+      : DateTime.fromFormat(`${matchWithDelimiters[1]} ${matchWithDelimiters[2]} ${matchWithDelimiters[3]}`, 'd M yyyy')
 
   if (formattedDate.isValid) {
     const day = formattedDate.toFormat('dd');

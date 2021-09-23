@@ -47,16 +47,21 @@ DateInput.format = (v: string): string => {
     !!(v || v === 0)
   );
 
-  const match = /^(\d{1,4})\D?(\d{1,2})\D?(\d{1,4})$/.exec(v.trim())
-  console.log(match);
-  const d = (match && (match[1].length>2 || parseInt(match[1], 10)>31))
-    ? DateTime.fromFormat(`${match[1]} ${match[2]} ${match[3]}`, 'yyyy MM dd')
-    : DateTime.fromFormat(`${match[1]} ${match[2]} ${match[3]}`, 'dd MM yyyy')
+  const matchWithDelimiters = /^(\d{1,4})\D?(\d{1,2})\D?(\d{1,4})$/.exec(v.trim())
+  const matchNoDelimiters = /^(\d{8})$/.exec(v.trim())
 
-  if (d.isValid) {
-    const day = d.toFormat('dd');
-    const month = d.toFormat('MM');
-    const year = d.toFormat('yyyy');
+  const formattedDate = (matchNoDelimiters)
+    ? DateTime.fromFormat(`${v.slice(0, 2)} ${v.slice(2, 4)} ${v.slice(4, 8)}`, 'dd MM yyyy')
+    : (matchWithDelimiters && (matchWithDelimiters[1].length>2 || parseInt(matchWithDelimiters[1], 10)>31))
+      ? DateTime.fromFormat(`${matchWithDelimiters[1]} ${matchWithDelimiters[2]} ${matchWithDelimiters[3]}`, 'yyyy MM dd')
+      : DateTime.fromFormat(`${matchWithDelimiters[1]} ${matchWithDelimiters[2]} ${matchWithDelimiters[3]}`, 'dd MM yyyy')
+
+  console.log(formattedDate);
+
+  if (formattedDate.isValid) {
+    const day = formattedDate.toFormat('dd');
+    const month = formattedDate.toFormat('MM');
+    const year = formattedDate.toFormat('yyyy');
 
     return `${year}-${month}-${day}`;
   } else {

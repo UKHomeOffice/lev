@@ -28,9 +28,7 @@ describe('DateInput', () => {
         value: '01-01-2010'
       })
     );
-
     expect(component.find("input").get(0).props.value).toEqual("01-01-2010");
-
   });
 
   describe('when given alternative date', () => {
@@ -42,9 +40,7 @@ describe('DateInput', () => {
         value: '1/1/2010'
       })
     );
-
     expect(component.find("input").get(0).props.value).toEqual("1/1/2010");
-
   });
 
   describe('when given invalid date', () => {
@@ -56,8 +52,6 @@ describe('DateInput', () => {
         value: '112010'
       })
     );
-
     expect(component.find("input").get(0).props.value).toEqual("112010");
-
   });
 });

@@ -147,12 +147,27 @@ const Page: FC<PageProps> = ({ location, signInHRef }) => {
     )
   );
 
+  const friendlyMessage = errorString => {
+    /*
+      This function takes an error string as an argument and displays the reason for
+      it in a more user-friendly manner. Additional error messages can be added
+      as a new case. If there is no match for the error string, it is displayed
+      to the user as-is.
+    */
+    switch(errorString) {
+      case 'Error: Cannot return null for non-nullable field V1Birth.id.':
+        // Error thrown when the app attempts to display a non-existent record.
+        return "Record " + systemNumber + " not found";
+        break;
+      default:
+        return errorString;
+    }
+  }
+
   const error = gql?.error && (
-    <pre>
-      <code>
-        {gql.error.toString()}
-      </code>
-    </pre>
+    <p>
+      {friendlyMessage(gql.error.toString())}
+    </p>
   );
 
   const results: BirthRecord[] = gql?.data?.v1Births?.map(processV1Birth);

@@ -38,17 +38,15 @@ describe('BirthDetails', () => {
       }
     }));
 
+    console.log(component.text());
+
     it('renders', () => undefined);
-    it('retains the correct birthplace', () => expect(component.text()).toContain('Place of birth888 Birth House, 8 Birth way, Bournemouth'));
-    it('retains the correct DoB', () => expect(component.text()).toContain('Date of birth08/08/2008'));
-    it('retains the mother\'s details correctly', () => expect(component.text()).toContain('Mother\'s NameJaneMother\'s Maiden nameMother\'s Surname at marriage if different from maiden nameMother\'s Place of birth'));
-    it('retains the father\'s details correctly', () => expect(component.text()).toContain('Father / ParentFather\'s NameDaveFather\'s Place of birthSwansea'));
-    it('retains the correct name', () => expect(component.text()).toContain('Joan Narcissus Ouroboros SMITH'));
-    it('retains the correct sex', () => expect(component.text()).toContain('SexIndeterminate'));
-    it('retains the correct system number', () => expect(component.text()).toContain('123456789'));
-    it('contains a single table element with 21 rows', () => {
-      expect(component.find('table')).toHaveLength(1);
-      expect(component.find('tr')).toHaveLength(21);
-    })
+    it('displays the correct birthplace', () => expect(component.text()).toContain('Place of birth888 Birth House, 8 Birth way, Bournemouth'));
+    it('displays the correct DoB', () => expect(component.text()).toContain('Date of birth08/08/2008'));
+    it('displays the mother\'s details correctly', () => expect(component.text()).toContain('Mother\'s NameJaneMother\'s Maiden nameMother\'s Surname at marriage if different from maiden nameMother\'s Place of birth'));
+    it('displays the father\'s details correctly', () => expect(component.text()).toContain('Father / ParentFather\'s NameDaveFather\'s Place of birthSwansea'));
+    it('displays the correct name', () => expect(component.text()).toContain('Joan Narcissus Ouroboros SMITH'));
+    it('displays the correct sex', () => expect(component.text()).toContain('SexIndeterminate'));
+    it('displays the correct system number', () => expect(component.text()).toContain('123456789'));
   });
 });

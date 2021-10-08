@@ -4,8 +4,10 @@ import EventList from '../src/EventList';
 
 describe('EventList', () => {
   describe('when given valid props', () => {
-    const component = mount(h(EventList, {}, 'Child'));
+    const text = 'Child';
+    const component = mount(h(EventList, {}, text));
 
-    it('renders', () => undefined);
+    it('displays the correct text', () => expect(component.text()).toBe(text));
+
   });
 });

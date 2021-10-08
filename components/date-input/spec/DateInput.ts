@@ -12,10 +12,8 @@ describe('DateInput', () => {
         hint: 'Enter the date you were born.'
       })
     );
-    const text = component.text();
 
-    it('renders', () => undefined);
-    it('contains the label', () => expect(text).toContain('What is your date of birth?'));
-    it('contains the hint', () => expect(text).toContain('Enter the date you were born.'));
+    it('contains the label', () => expect(component.text()).toContain('What is your date of birth?'));
+    it('contains the hint', () => expect(component.text()).toContain('Enter the date you were born.'));
   });
 });

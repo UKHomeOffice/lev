@@ -4,19 +4,52 @@ import BirthSummary from '../src/BirthSummary';
 
 describe('BirthSummary', () => {
   describe('when given valid props', () => {
+    const birthplace = 'Bournemouth';
+    const forenames = 'John';
+    const surname = 'SMITH';
+    const fathersName = 'William SMITH';
+    const mothersName = 'Jane SMITH';
+
     const component = mount(h(BirthSummary, {
-      birthplace: 'Bournemouth',
-      forenames: 'John',
-      surname: 'SMITH',
+      birthplace: birthplace,
+      forenames: forenames,
+      surname: surname,
       father: {
-        name: 'William SMITH'
+        name: fathersName
       },
       mother: {
-        name: 'Jane SMITH'
+        name: mothersName
       },
       number: 1
     }));
 
-    it('renders', () => undefined);
+    it('displays the correct details', () => {
+      expect(component.text()).toBe(forenames + ' ' + surname + 'Place of birth' + birthplace + 'Mother' + mothersName + 'Father' + fathersName);
+    });
+  });
+
+  describe('when given alternative valid props', () => {
+    const birthplace = 'Paisley';
+    const forenames = 'Fathiya';
+    const surname = 'MOHAMMED';
+    const fathersName = 'Shoaib MOHAMMED';
+    const mothersName = 'Naia MOHAMMED';
+
+    const component = mount(h(BirthSummary, {
+      birthplace: birthplace,
+      forenames: forenames,
+      surname: surname,
+      father: {
+        name: fathersName
+      },
+      mother: {
+        name: mothersName
+      },
+      number: 1
+    }));
+
+    it('displays the correct details', () => {
+      expect(component.text()).toBe(forenames + ' ' + surname + 'Place of birth' + birthplace + 'Mother' + mothersName + 'Father' + fathersName);
+    });
   });
 });

@@ -14,3 +14,7 @@ dl {
   margin-right: max(30px, calc(15px + env(safe-area-inset-right))) !important;
   margin-left: max(30px, calc(15px + env(safe-area-inset-left))) !important;
 }
+
+p {
+  max-width: 100%;
+}

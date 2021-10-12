@@ -4,6 +4,14 @@ import commonConfig from '../common/config';
 const env = process.env.NODE_ENV as NodeEnv;
 const devMode = env === NodeEnv.Development;
 const stagingEnvironment = process.env.ENVIRONMENT || 'dev';
+const dummyRoles = [
+  'dev',
+  'preview',
+  'birth',
+  'death',
+  'marriage',
+  'full-details'
+];
 
 const defaultsFalse = (v: string): boolean => (v || '').match(/(true|yes|on)/i) !== null;
 const defaultsTrue = (v: string): boolean => (v || '').match(/(false|no|off)/i) === null;
@@ -16,19 +24,17 @@ const serverConfig = {
     dummy: {
       username: 'TestUser',
       groups: [],
-      roles: [
-        'dev',
-        'preview',
-        'birth',
-        'death',
-        'marriage',
-        'full-details'
-      ]
+      roles: dummyRoles
     },
     headers: {
       usernameHeader: process.env.AUTH_HEADER_USERNAME || 'x-auth-username',
       groupsHeader: process.env.AUTH_HEADER_GROUPS || 'x-auth-groups',
       rolesHeader: process.env.AUTH_HEADER_ROLES || 'x-auth-roles'
+    },
+    basic: {
+      username: process.env.AUTH_USERNAME || 'guest',
+      password: process.env.AUTH_PASSWORD || 'password',
+      roles: dummyRoles,
     },
     oidc: {
       issuer: process.env.OIDC_ISSUER || 'https://sso-dev.notprod.homeoffice.gov.uk/auth/realms/lev/',
@@ -48,6 +54,7 @@ const serverConfig = {
     port: Number(process.env.LISTEN_PORT) || 8080
   },
   mode: (process.env.MODE || 'server') as Mode,
+  privacy: !!(process.env.PRIVACY && process.env.PRIVACY.match(/(yes|true)/i)),
   requiredRoles: [ stagingEnvironment, 'preview' ],
   ssrOnly: !!(process.env.SSR_ONLY && process.env.SSR_ONLY.match(/(yes|true)/i))
 };

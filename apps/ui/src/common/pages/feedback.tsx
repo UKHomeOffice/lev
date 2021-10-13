@@ -24,7 +24,7 @@ const Page: FC<PageProps> = props => (
           label={<h4>Message</h4>}
           validators={[required()]}
         />
-        <Form.Submit value="Submit" />
+        <Form.Submit>Submit</Form.Submit>
       </Form>
     </div>
   </div>

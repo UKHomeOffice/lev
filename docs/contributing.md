@@ -1,5 +1,5 @@
-Working on and contributing to NotGovUK
-=======================================
+Working on and contributing to LEV
+==================================
 
 
 Contributing
@@ -89,14 +89,11 @@ npm run create:component
 See also: [Working on your project]
 
 
--- Daniel Martin, December 2019 (updated August 2020).
-
-
-[Pull requests]: https://github.com/daniel-ac-martin/NotGovUK/pulls
-[open an issue]: https://github.com/daniel-ac-martin/NotGovUK/issues/new
-[pull request]: https://github.com/daniel-ac-martin/NotGovUK/pulls
-[issue]: https://github.com/daniel-ac-martin/NotGovUK/issues
-[get in touch]: https://github.com/daniel-ac-martin/NotGovUK/issues/new
+[Pull requests]: https://github.com/UKHomeOffice/lev/pulls
+[open an issue]: https://github.com/UKHomeOffice/lev/issues/new
+[pull request]: https://github.com/UKHomeOffice/lev/pulls
+[issue]: https://github.com/UKHomeOffice/lev/issues
+[get in touch]: https://github.com/UKHomeOffice/lev/issues/new
 [pnpm]: https://pnpm.js.org/en/installation
 [Storybook]: https://storybook.js.org/
 [Working on your project]: ./working-on-your-project

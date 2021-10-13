@@ -9,12 +9,23 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "webpack",
     "package:serverless": "sls package",
+    "heroku-postbuild": "npm run build",
     "clean": "rm -rf .serverless dist",
     "dev": "NODE_ENV=development node-hot --fork | bunyan",
-    "dev:ssr": "NODE_ENV=development SSR_ONLY=true node-hot --fork | bunyan"
+    "dev:ssr": "NODE_ENV=development SSR_ONLY=true node-hot --fork | bunyan",
+    "create": "plop",
+    "create:deployment": "plop deployment",
+    "create:page": "plop page"
   },
   "author": "Daniel A.C. Martin <npm@daniel-martin.co.uk> (http://daniel-martin.co.uk/)",
   "license": "MIT",
+  "engines": {
+    "node": ">=12.0.0",
+    "os": [
+      "darwin",
+      "linux"
+    ]
+  },
   "devDependencies": {
     "@apollo/client": "^3.2.7",
     "@graphql-tools/schema": "^7.0.0",
@@ -24,6 +35,7 @@
     "@ho-lev/date-input": "workspace:^0.1.0",
     "@ho-lev/event-list": "workspace:^0.1.0",
     "@not-govuk/app-composer": "^0.3.2",
+    "@not-govuk/app-plop-pack": "^0.3.2",
     "@not-govuk/client-renderer": "^0.3.2",
     "@not-govuk/components": "^0.3.2",
     "@not-govuk/engine": "^0.3.2",
@@ -38,6 +50,7 @@
     "bunyan": "^1.8.12",
     "graphql": "^15.4.0",
     "node-hot-loader": "^1.19.0",
+    "plop": "^2.7.3",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-helmet-async": "^1.0.7",

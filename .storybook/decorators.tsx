@@ -5,7 +5,7 @@ import { BrowserRouter as Router } from 'react-router-dom';
 const Root: FC<any> = props => (
   <div id="story-root" {...props} style={{
     backgroundColor: 'white',
-    fontFamily: [ 'GDS Transport', 'Roboto', 'Arial', 'sans-serif' ],
+    fontFamily: [ 'Roboto', 'GDS Transport', 'Arial', 'sans-serif' ],
     padding: '1em'
   }}>
     <HelmetProvider>

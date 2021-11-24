@@ -26,7 +26,7 @@ pipeline:
   promote_to_uat:
     image: quay.io/ukhomeofficedigital/drone-trigger:latest
     secrets: [ drone_token ]
-    drone_server: https://drone-gitlab.acp.homeoffice.gov.uk
+    drone_server: https://drone-gl.acp.homeoffice.gov.uk/
     repo: lev/levops
     branch: master
     event: push

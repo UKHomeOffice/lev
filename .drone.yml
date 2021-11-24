@@ -1,66 +1,95 @@
-matrix:
-  DOCKER_USERNAME:
-    - ukhomeofficedigital+lev
-  DOCKER_REGISTRY:
-    - quay.io
-pipeline:
-  deploy_ui:
-    image: quay.io/ukhomeofficedigital/lev-ci
-    secrets:
-      - DOCKER_PASSWORD
-      - KUBE_SERVER
-      - KUBE_NAMESPACE
-      - KUBE_TOKEN
-      - KUBE_DEPLOYMENT_UI
-      - KUBE_CONTAINER_UI
-    environment:
-      - DOCKER_HOST=tcp://172.17.0.1:2375
-    commands:
-      - echo "$${DOCKER_PASSWORD}" | docker login -u "${DOCKER_USERNAME}" --password-stdin "${DOCKER_REGISTRY}"
-      - npm install -g pnpm
-      - cd 'apps/ui'
-      - make deploy kubectl="kubectl --insecure-skip-tls-verify --server=$${KUBE_SERVER} --namespace=$${KUBE_NAMESPACE} --token=$${KUBE_TOKEN}"
-    when:
-      branch: master
-      event: push
-  promote_to_uat:
-    image: quay.io/ukhomeofficedigital/drone-trigger:latest
-    secrets: [ drone_token ]
-    drone_server: https://drone-gl.acp.homeoffice.gov.uk/
-    repo: lev/levops
+---
+kind: pipeline
+name: matrix-1
+type: kubernetes
+
+platform:
+  os: linux
+  arch: amd64
+
+steps:
+- name: deploy_ui
+  pull: if-not-exists
+  image: quay.io/ukhomeofficedigital/lev-ci
+  commands:
+  - echo "$${DOCKER_PASSWORD}" | docker login -u "ukhomeofficedigital+lev" --password-stdin "quay.io"
+  - npm install -g pnpm
+  - cd 'apps/ui'
+  - make deploy kubectl="kubectl --insecure-skip-tls-verify --server=$${KUBE_SERVER} --namespace=$${KUBE_NAMESPACE} --token=$${KUBE_TOKEN}"
+  environment:
+    DOCKER_HOST: tcp://172.17.0.1:2375
+    DOCKER_PASSWORD:
+      from_secret: DOCKER_PASSWORD
+    KUBE_CONTAINER_UI:
+      from_secret: KUBE_CONTAINER_UI
+    KUBE_DEPLOYMENT_UI:
+      from_secret: KUBE_DEPLOYMENT_UI
+    KUBE_NAMESPACE:
+      from_secret: KUBE_NAMESPACE
+    KUBE_SERVER:
+      from_secret: KUBE_SERVER
+    KUBE_TOKEN:
+      from_secret: KUBE_TOKEN
+  when:
+    branch:
+    - master
+    event:
+    - push
+
+- name: promote_to_uat
+  pull: if-not-exists
+  image: quay.io/ukhomeofficedigital/drone-trigger:latest
+  settings:
     branch: master
-    event: push
     deploy_to: uat
-    when:
-      branch: master
-      event: push
-      status: success
-  notify_slack_success:
-    image: plugins/slack:1.0
-    secrets: [ slack_webhook ]
+    drone_server: https://drone-gl.acp.homeoffice.gov.uk/
+    event: push
+    repo: lev/levops
+  environment:
+    DRONE_TOKEN:
+      from_secret: drone_token
+  when:
+    branch:
+    - master
+    event:
+    - push
+    status:
+    - success
+
+- name: notify_slack_success
+  pull: if-not-exists
+  image: plugins/slack:1.0
+  settings:
     channel: general
+    template: "*Deployed {{repo.name}} to Dev* - <{{build.link}}|#{{build.number}}>\n"
     username: Drone
-    template: >
-      *Deployed {{repo.name}} to Dev* - <{{build.link}}|#{{build.number}}>
-    when:
-      branch: master
-      event: push
-      status: success
-  notify_slack_failure:
-    image: plugins/slack
-    secrets: [ slack_webhook ]
+  environment:
+    SLACK_WEBHOOK:
+      from_secret: slack_webhook
+  when:
+    branch:
+    - master
+    event:
+    - push
+    status:
+    - success
+
+- name: notify_slack_failure
+  pull: if-not-exists
+  image: plugins/slack
+  settings:
     channel: alerts
+    template: "*Failed to deploy {{repo.name}} to Dev*\nAuthor: {{build.author}}\nDuration: {{since job.started}} Job: <{{build.link}}|#{{build.number}}>\nCommit: {{build.commit}}\n"
     username: Drone
-    template: >
-      *Failed to deploy {{repo.name}} to Dev*
+  environment:
+    SLACK_WEBHOOK:
+      from_secret: slack_webhook
+  when:
+    branch:
+    - master
+    event:
+    - push
+    status:
+    - failure
 
-      Author: {{build.author}}
-
-      Duration: {{since job.started}}
-      Job: <{{build.link}}|#{{build.number}}>
-
-      Commit: {{build.commit}}
-    when:
-      branch: master
-      event: push
-      status: failure
+...

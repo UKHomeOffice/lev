@@ -35,6 +35,10 @@ steps:
     - master
     event:
     - push
+  resources:
+    limits:
+      cpu: 500
+      memory: 500MiB
 
 - name: promote_to_uat
   image: plugins/downstream

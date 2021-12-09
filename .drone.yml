@@ -7,6 +7,11 @@ platform:
   os: linux
   arch: amd64
 
+resources:
+  requests:
+    cpu: 300
+    memory: 300MiB
+
 steps:
 - name: deploy_ui
   pull: if-not-exists

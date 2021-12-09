@@ -1,7 +1,7 @@
 ---
 kind: pipeline
-name: matrix-1
-type: docker
+name: default
+type: kubernetes
 
 platform:
   os: linux
@@ -17,7 +17,7 @@ steps:
   - cd 'apps/ui'
   - make deploy kubectl="kubectl --insecure-skip-tls-verify --server=$${KUBE_SERVER} --namespace=$${KUBE_NAMESPACE} --token=$${KUBE_TOKEN}"
   environment:
-    DOCKER_HOST: tcp://172.17.0.1:2375
+    DOCKER_HOST: tcp://127.0.0.1:2375
     DOCKER_PASSWORD:
       from_secret: DOCKER_PASSWORD
     KUBE_CONTAINER_UI:
@@ -37,22 +37,21 @@ steps:
     - push
 
 - name: promote_to_uat
-  pull: if-not-exists
-  image: quay.io/ukhomeofficedigital/drone-trigger:latest
+  image: plugins/downstream
   settings:
-    branch: master
-    deploy_to: uat
-    drone_server: https://drone-gl.acp.homeoffice.gov.uk/
-    event: push
-    repo: lev/levops
-  environment:
-    DRONE_TOKEN:
+    server: https://drone-gl.acp.homeoffice.gov.uk
+    token:
       from_secret: drone_token
+    fork: true
+    deploy: uat
+    repositories:
+      - lev/levops@master
+    last_successful: true
   when:
     branch:
-    - master
+      - master
     event:
-    - push
+      - push
     status:
     - success
 
@@ -91,5 +90,9 @@ steps:
     - push
     status:
     - failure
+
+services:
+  - name: docker
+    image: 340268328991.dkr.ecr.eu-west-2.amazonaws.com/acp/dind
 
 ...

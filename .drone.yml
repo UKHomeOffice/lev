@@ -37,8 +37,8 @@ steps:
     - push
   resources:
     limits:
-      cpu: 500
-      memory: 500MiB
+      cpu: 800
+      memory: 800MiB
 
 - name: promote_to_uat
   image: plugins/downstream

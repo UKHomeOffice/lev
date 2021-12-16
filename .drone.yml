@@ -7,11 +7,6 @@ platform:
   os: linux
   arch: amd64
 
-resources:
-  requests:
-    cpu: 1000
-    memory: 1000MiB
-
 steps:
 - name: deploy_ui
   pull: if-not-exists
@@ -42,8 +37,8 @@ steps:
     - push
   resources:
     limits:
-      cpu: 1000
-      memory: 2000MiB
+      cpu: "500"
+      memory: "2Gi"
 
 - name: promote_to_uat
   image: plugins/downstream

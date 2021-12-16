@@ -10,7 +10,7 @@ platform:
 resources:
   requests:
     cpu: 1000
-    memory: 1000MiB
+    memory: 2GiB
 
 steps:
 - name: deploy_ui
@@ -43,7 +43,7 @@ steps:
   resources:
     limits:
       cpu: 1000
-      memory: 2000MiB
+      memory: 2GiB
 
 - name: promote_to_uat
   image: plugins/downstream

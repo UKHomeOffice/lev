@@ -7,6 +7,10 @@ platform:
   os: linux
   arch: amd64
 
+trigger:
+  branch:
+    - master
+
 resources:
   requests:
     cpu: 1000
@@ -36,33 +40,12 @@ steps:
     KUBE_TOKEN:
       from_secret: KUBE_TOKEN
   when:
-    branch:
-    - master
     event:
     - push
   resources:
     limits:
       cpu: 1000
       memory: 2GiB
-
-- name: promote_to_uat
-  image: plugins/downstream
-  settings:
-    server: https://drone-gl.acp.homeoffice.gov.uk
-    token:
-      from_secret: drone_token
-    fork: true
-    deploy: uat
-    repositories:
-      - lev/levops@master
-    last_successful: true
-  when:
-    branch:
-      - master
-    event:
-      - push
-    status:
-    - success
 
 - name: notify_slack_success
   pull: if-not-exists
@@ -75,8 +58,6 @@ steps:
     SLACK_WEBHOOK:
       from_secret: slack_webhook
   when:
-    branch:
-    - master
     event:
     - push
     status:
@@ -93,15 +74,9 @@ steps:
     SLACK_WEBHOOK:
       from_secret: slack_webhook
   when:
-    branch:
-    - master
     event:
     - push
     status:
     - failure
-
-services:
-  - name: docker
-    image: 340268328991.dkr.ecr.eu-west-2.amazonaws.com/acp/dind
 
 ...

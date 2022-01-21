@@ -7,10 +7,6 @@ platform:
   os: linux
   arch: amd64
 
-trigger:
-  branch:
-    - master
-
 resources:
   requests:
     cpu: 1000
@@ -40,6 +36,8 @@ steps:
     KUBE_TOKEN:
       from_secret: KUBE_TOKEN
   when:
+    branch:
+    - master
     event:
     - push
   resources:
@@ -58,6 +56,8 @@ steps:
     SLACK_WEBHOOK:
       from_secret: slack_webhook
   when:
+    branch:
+    - master
     event:
     - push
     status:
@@ -74,6 +74,8 @@ steps:
     SLACK_WEBHOOK:
       from_secret: slack_webhook
   when:
+    branch:
+    - master
     event:
     - push
     status:

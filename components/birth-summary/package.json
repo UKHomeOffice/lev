@@ -26,7 +26,7 @@
   "dependencies": {
     "@not-govuk/component-helpers": "^0.3.4",
     "@not-govuk/link": "^0.3.4",
-    "@not-govuk/route-utils": "^0.3.4",
+    "@not-govuk/route-utils": "^0.4.2",
     "@not-govuk/sass-base": "^0.3.4"
   },
   "peerDependencies": {

@@ -24,7 +24,7 @@
     "react-components"
   ],
   "dependencies": {
-    "@not-govuk/component-helpers": "^0.3.4"
+    "@not-govuk/component-helpers": "^0.7.2"
   },
   "peerDependencies": {
     "@not-govuk/components": "^0.1.33",

@@ -1,0 +1,22 @@
+# Snyk (https://snyk.io) policy file, patches or ignores known vulnerabilities.
+version: v1.25.1
+ignore: {}
+# patches apply the minimum changes required to fix a vulnerability
+patch:
+  SNYK-JS-LODASH-567746:
+    - '@not-govuk/link > @not-govuk/anchor > @not-govuk/docs-components > @storybook/addon-docs > @babel/preset-env > @babel/plugin-transform-classes > @babel/helper-define-map > lodash':
+        patched: '2025-12-21T10:12:21.652Z'
+        id: SNYK-JS-LODASH-567746
+        path: >-
+          @not-govuk/link > @not-govuk/anchor > @not-govuk/docs-components >
+          @storybook/addon-docs > @babel/preset-env >
+          @babel/plugin-transform-classes > @babel/helper-define-map > lodash
+    - '@not-govuk/link > @not-govuk/anchor > @not-govuk/docs-components > @storybook/addon-docs > @babel/preset-env > @babel/plugin-proposal-unicode-property-regex > @babel/helper-create-regexp-features-plugin > @babel/helper-regex > lodash':
+        patched: '2025-12-21T10:12:21.652Z'
+        id: SNYK-JS-LODASH-567746
+        path: >-
+          @not-govuk/link > @not-govuk/anchor > @not-govuk/docs-components >
+          @storybook/addon-docs > @babel/preset-env >
+          @babel/plugin-proposal-unicode-property-regex >
+          @babel/helper-create-regexp-features-plugin > @babel/helper-regex >
+          lodash
